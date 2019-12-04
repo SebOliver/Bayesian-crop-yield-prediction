@@ -148,17 +148,20 @@ Bayesian inference -- crop yield -- weather -- climate
 
 \section{Introduction}
 
-Establishing the climate risk to the global production of individual crops, and how that might change in the future, is an essential requirement for building a resilient and robust food system that ensures food security for all \citep[][]{fao:2002}. %However, quantifying this risk represents a significant challenge, primarily because limited data records hinder our ability to identify causal 
+Establishing the climate risk to the global production of individual crops, and how that might change in the future, is an essential requirement for building a resilient and robust food system that ensures food security for all \citep[][]{fao:2002}.
+{\color{red} [Can Ed. put something here that indicates why this is essential and how this leads to the following requirement]}
+ %However, quantifying this risk represents a significant challenge, primarily because limited data records hinder our ability to identify causal 
 This requires the characterisation of the relationship between meteorological and food production variations. 
 
-There is a growing consensus that a range of methods are needed to accurately assess climate impacts on crop yield \citep[e.g.][]{lobell:2017, tigchelaar:2018, snyder:2018}.  Broadly there are two complementary approaches to this:  physiological processes-based models; or data-driven, statistical models.
+There is a growing consensus that a range of methods are needed to accurately assess climate impacts on crop yield \citep[e.g.][]{lobell:2017, tigchelaar:2018, snyder:2018}. {\color{red} Ed - one sentence / phrase on why the range of methods is required.} Broadly there are two complementary approaches to this:  physiological processes-based models; or data-driven, statistical models.
 
-Data-driven, statistical methods can be rapidly applied when there is yield data, even where there is limited laboratory-based understanding of the crop. Physiological models, however, can be extrapolated into situations where there is limited yield data.
+Physiological models are built upon a laboratory-based understanding of the crop. Data-driven, statistical models can be developed when there is sufficient empirical yield data.  Each can thus be developed and applied when the requirements for the other are not met.
 
-Previous statistical methods \citep[e.g.][]{schlenker:2009, lobell:2010, welch:2010} capture the broad influence of weather on crop yield based on linear relationships, calibrated using historical data. Non-linear models have been explored based on temperature \citep[e.g.][]{cutforth:1990, yin:1995, wang:1998, yan:1999, streck:2007, zhou:2018} and precipitation  \citep[e.g.][]{cakir:2004, ge:2012, lobell:2013, carter:2016, song:2019}.
+Previous statistical methods \citep[e.g.][]{schlenker:2009, lobell:2010, welch:2010} capture the broad influence of weather on crop yield based on linear relationships, calibrated using historical data. These have limited validity beyond the regimes in which they have been calibrated. Non-linear models have been explored based on temperature \citep[e.g.][]{cutforth:1990, yin:1995, wang:1998, yan:1999, streck:2007, zhou:2018} and {\color{red} should this be "or" rather than "and"?}precipitation  \citep[e.g.][]{cakir:2004, ge:2012, lobell:2013, carter:2016, song:2019}.
 
-By deriving an empirical \add{and non-linear} ``growth response function'' that \remove{maps}\add{relates} temperature and rainfall conditions to crop growth, the approach developed here aims to complement both process-based crop models and existing statistical approaches. 
+A physically motivated, but empirical, data-driven approach would complement both process-based crop models and existing, generic, statistical approaches. This would allow models to be developed without extensive laboratory analysis but with a greater range of validity.
 
+Our approach exploits Bayesian inference to derive an empirical \add{and non-linear} ``growth response function'' that \remove{maps}\add{relates} temperature and rainfall conditions to crop growth.
 
 
 %For this study, we use monthly (rather than daily) data for two reasons: firstly, to extract the typical crop response to large-scale meteorological conditions; secondly, to test the performance of the model with limited data as a way of assessing its potential utility in regions where historical weather records may be less complete.
@@ -188,7 +191,7 @@ More generally, Bayesian inference is frequently applied to problems of model pa
 The aim here is to present a simple and robust model which captures the impact of mean temperature and precipitation changes on mean yield. Developing a flexible method for investigating the influence of present-day natural climate on yield allows us to explore the direction and scale of climate change impacts in the absence of adaptation.
 
 
-Here, we use these methods to model the response of US maize to temperature and precipitation, which has been widely studied \citep[e.g.][]{schlenker:2009, hatfield:2011, roberts:2012, lobell:2013, sanchez:2014, hatfield:2015, Partridge:2019}. We aim to first demonstrate an ability to capture key aspects of present-day maize yield variability in the US, and secondly to explore the implications of climate change for the current maize varieties in the absence of adaptation. 
+Here, we apply these methods to model the response of US maize to temperature and precipitation, which has been widely studied \citep[e.g.][]{schlenker:2009, hatfield:2011, roberts:2012, lobell:2013, sanchez:2014, hatfield:2015, Partridge:2019}. We aim to first demonstrate an ability to capture key aspects of present-day maize yield variability in the US, and secondly to explore the implications of climate change for the current maize varieties in the absence of adaptation. 
 
 
 The paper is structured as follows: section~\ref{sec:data} describes the yield and meteorological data, followed by section~\ref{sec:models} which presents the models, demonstrating their strengths and weaknesses. Section~\ref{sec:impacts} applies the model \remove{with increments in temperature and precipitation}\add{to an ensemble of climate projections} as a first step to predict the \remove{consequence}\add{influence} of climate change on \remove{agricultural}yield \add{for present day maize varieties}. Finally, section~\ref{sec:conclusions} summarises the work and our main conclusions.
