@@ -1,0 +1,218 @@
+\documentclass{letter}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{changepage}
+\usepackage{xcolor}
+
+\newcommand{\remove}[1]{   
+    %\begin{adjustwidth}{2cm}{}
+    \color{red}
+    \sout{#1}
+    %\end{adjustwidth}
+    }
+
+    
+\newcommand{\add}[1]{   
+    %\begin{adjustwidth}{2cm}{}
+    \color{green}
+    #1
+    %\end{adjustwidth}
+    }
+
+\newcommand{\paper}[1]{   
+    \begin{adjustwidth}{1cm}{}
+    #1
+    \end{adjustwidth}
+    }
+    
+\newcommand{\review}[1]{   
+    \begin{adjustwidth}{1cm}{}
+    \em{#1}
+    \end{adjustwidth}
+    }
+
+
+\signature{Dr Raphael Shirley}
+\address{Dr Raphael Shirley \\ Instituto de Astrof\'{i}sica de Canarias \\ Universidad de La Laguna \\ Tenerife, Spain}
+\begin{document}
+
+\begin{letter}{Environmental Research Communications \\ Institute of Physics \\ London, UK}
+
+\opening{Dear editorial board,}
+
+I am writing to respond to the reviewers' comments made following our submission of the paper ``An empirical, Bayesian approach to modelling the impact of weather on crop yield: maize in the US" to Environmental Research Letters. 
+
+Both reviewers questioned the work's novelty in reference to previous regression models such as Schlenker and Roberts (2009). We accept the work is built on previous publications but argue that it generalises the results to monthly level climatology, more rigorously accounts for errors, and has now, in this revised submission, been applied to new climate simulation data. In response to the reviewer comments, and as suggested by the editor, we have decided to switch the submission to Environmental Research Communications. This journal has less emphasis on novelty and more on the validity of the method and relevance of its results. 
+
+Our aim is to demonstrate the applicability of a simple model of crop yield based on mean monthly temperature and precipitation. The model we present is indeed of similar form, albeit with lower time resolution, to that of Schlenker and Roberts (2009). The simplicity of the model allows it to be applied in expensive Markov Chain Monte Carlo simulations, increasing its applicability beyond the previous work. Finally, we have added further simulations of the impacts of a changing climate on mean yields, as predicted by full global climate simulations, adding some further novelty to the work. We hope that these changes, alongside considerable rewriting of the paper itself sufficiently address the reviewers' criticism.
+
+The reviewers also made various specific comments in addition to the general criticism discussed above. In response to remarks regarding the full description of the model we have decided to resubmit the work as a paper as opposed to a letter in order to include more details and discussion. One of the main changes made in this regard is to move some of the details in the appendix to the body of the paper such that the model is fully described without reference to appendices.
+
+Finally, we have also included a series of new detrending methods and extended the techniques used to compare model performance. Specifically, we added comparisons using the `Bayesian $R^2$' which is designed to measure captured variance in Bayesian generative models which don't provide point estimates. 
+
+
+We also provide an annotated version of the paper in addition to detailing changes that have been made here. The annotated version uses the following convention:
+\paper{
+Text that has not been changed will be rendered normally like this. \remove{We will highlight text that has been removed from the paper by showing it red and struck through like this.}\add{We will likewise show text that has been added by displaying it in green like this.}
+}
+
+
+
+We will now respond to the specific reviewer comments. The first reviewer begins:
+
+\review{
+ERL REFEREE REPORT(S):
+Referee: 1
+
+COMMENTS TO THE AUTHOR(S)
+Estimating effects of weather and climate and changes therein on crop yields and crops yield variability is of highest importance. The paper presents an interesting approach and case study. Yet, I have some comments and suggestions
+- The clear research gap motivating this paper is unclear to me. What is the value added?
+}
+
+We want to develop a simple model which can capture mean yield responses as a function of monthly mean temperatures and precipitation. The advantage of this is it can allow agricultural planning on the basis of modelled future climate conditions in a way that includes robust measures of uncertainties. We also want to apply the model to changes to the climate from simulations in order to understand risks to food security. We have significantly restructured and added to the introduction to more clearly state these motivations.
+
+\review{
+- You lay out earlier literature and methodical basis of estimating the yield-climate relationship without touching upon the entire literature. Especially, I think the paper by Carter et al. (2018) and references therein should be an important basis to build upon.
+}
+
+We have added a discussion in the introduction regarding Carter et al. (2018). The further work we aim to do using the model to investigate economic responses will use this work and is now discussed in the paper. 
+
+\review{
+- Line 70: this claim is not sufficiently motivated. What is difficult and why does a new method help?
+}
+
+We have significantly rephrased this paragraph. The aim is to provide a simple, robust model with accurate error measures which captures the behaviour of preexisting models in order to permit future studies of economic impacts, designing policy and using climate simulations to model yield response. We also want to have robust measures of uncertainty given the large errors associated with any forecasting.
+
+\review{
+- Line 75: this aim `The model should...' is not entirely clear – why do you aim to recommend targeted conditions?
+}
+
+The model has been developed in order to use climate simulations to make policy recommendations and evaluating different crop strains. If the model can capture how current strains will respond to a changing climate it can be used to understand limitations of current strains. The aim will be to develop strains to mitigate impacts of a changing climate on yields. Given the extra space permitted by now using a paper format we have added some clarification here.
+
+\review{
+- L89-110: I strongly recommend to also consider detrending methods, e.g. linear detrending. This could serve as sensitivity check of your approach. Robust methods have been discussed to avoid sensitivity to outliers.
+}
+
+We originally used linear detrending but were concerned about the assumption inherent in doing this and moved to the moving median method. We have now included a comparison of performance using four different detrending methods: five year rolling median anomalies, five year rolling mean anomalies, five year rolling mean fractional anomalies, and linear detrending anomalies. Using the Bayesian $R^2$ metric, the five year rolling mean fractional anomaly performs the best. This can be explained in terms of the variance being correlated with mean yields. This is now the form of detrending we recommend based on the new comparisons of performance conducted for the resubmission.
+
+\review{
+- For the general methodological approach I wonder what your analysis can add. The papers by Schlenker and co-authors are highly capable of estimating the important effects of extreme weather (beyond thresholds) on crop yields. As I understand, your model is not capable of doing that. What can we learn in addition?
+}
+
+The model presented here is a simplification of the model by Schlenker and Roberts (2009) (although including precipitation in addition to temperature). The purpose of the work is to show that a simplified model can capture mean impacts of climate change and therefore be applied to multiple realisations of upcoming climate simulations, under present or changed conditions, and robustly measure the impacts of changing mean temperatures and precipitation. We show that a coarse grained version of the Schlenker and Roberts (2009) model can capture a useful fraction of year to year yield variation and applied it to simulated effects of climate change. Both of these are improvements on the previous regression analysis and its application.
+
+\review{
+- The model set-up and estimation is unclear from the main paper section. Even though I acknowledge that in a letter journal the methods go in the appendix, the main paper needs to ensure that logic and functioning of the estimation are clearly provided.
+}
+
+We have taken the opportunity afforded by the change of journal to move the model description in to the body and changed the format from letter to paper. We hope that all the methods are now fully described in the body of the paper.
+
+\review{
+- Your approach based on weather months is highly biased. The critical crop growth phases obviously vary from year to year. Recently, the use of ‘flexible’ windows to account for weather conditions within critical crop growth phases have been proposed (e.g. Dalhaus et al.). Your monthly resolutions seems very coarse to estimate the nuanced effects you outline in the paper.
+}
+
+The model proposed does permit growth to occur in any of the months in which conditions are near the peak of the yield response. Figure 1. in Shlenker and Roberts (2009) confirm the suitability of a Gaussian yield response and the models are comparable. The monthly resolution will of course reduce the sensitivity of the model. However, we hope that the validation work does demonstrate the model's capability to predict yields to a useful degree.
+
+\review{
+- Line 199: Is this relationship really so linear? You may provide copulas or plots to show tail behavior of this relationship. High daily maximum may in the upper tails not be fully reflect by high monthly means. Thus, your results will be biased, as effects of high daily temperatures will be not necessarily recovered. Here I have a general doubt that your methodological approach is superior to the earlier literature by Schlenker and co-authors.
+}
+
+Since the model we present uses monthly means it therefore uses less information than the Schlenker mode and cannot outperform it. One possible benefit is that it remains applicable in situations where there is no access to such daily temperatures. We have also provided extensive comparisons of models and calculated the errors associated with each. Further we have now added some new analysis and measurements regarding the relationship between monthly mean and daily maxima. We have explored the conditional dependence by binning the monthly mean temperatures and calculating the associated mean daily maximum and shown tight correlations. While there may be non-linearity in the relationship between daily maxima and monthly mean this will not affect the general modelling only our rough inference of the corresponding monthly maxima to our measured ideal monthly mean values. These are only used to qualitatively compare to previous work and form no part of the model itself.
+
+\review{
+- The entire question of adaption captured in your data is not addressed sufficiently.
+}
+
+The model does not capture adaptation, in terms of strains and productivity improvements, which will occur. It is dangerous to predict future adaptation given past yield data and assuming a continuation of linear improvements. Figure 1 demonstrates over time yields have increased which may well be due to productivity increases which could continue. We have added some text on this point to make it clear that all our conclusions are independent of any adaptation which will occur. Indeed, one motivation of the work is to guide crop strain adaptation to counter the consequences of a changing climate. Any analysis of the impact of adaption is beyond the scope of this paper and we only discuss how it may be incorporated in future work.
+
+\review{
+- Line 270-71: As indicted above, this limitation of your work is very critical from my point of view
+}
+
+Our aim is to apply a simple and robust model to investigate the impacts of changes to mean monthly temperatures and precipitation. Future work aims to incorporate adaptation and other changes which are not considered here. We have added discussion on how this model can be used to develop adaptation strategies but that is not the focus of this paper.
+
+\review{
+- L294: more careful paper editing before submission
+
+Carter, C., Cui, X., Ghanem, D., & Mérel, P. (2018). Identifying the Economic Impacts of Climate Change on Agriculture. Annual Review of Resource Economics, 10, 361-380.
+Dalhaus, T., Musshoff, O., Finger, R. (2018). Phenology Information Contributes to Reduce Temporal Basis Risk in Agricultural Weather Index Insurance. Scientific Reports (2018) 8:46. DOI:10.1038/s41598-017-18656-5
+}
+
+We are grateful for the suggested references. We have read them with interest and included a discussion on economic impacts in the text. We are currently working on economic impacts but this requires the inclusion of economic data. Here we aimed to test the applicability of a simple model to typically available climate data before applying it in an economic context. 
+
+That is the end of the first reviewer report. The second reviewer begins:
+
+\review{
+Referee: 2
+
+COMMENTS TO THE AUTHOR(S)
+General comments
+
+The authors have conducted a statistical analysis of maize yields in the US at the state level using temperature and precipitation as predictors.
+
+While I find the manuscript generally well-written and a good exercise in the analysis of crop yield data, I do not believe that the findings have enough novelty and originality.
+}
+
+We thank the author for praising the writing and analysis and accept that the model is not entirely new and have more clearly stated this in the paper. We hope that the impacts of the model under general changes to climate are informative. Due to this, and given we have transferred to the new journal, where novelty is not such a critical criterion for acceptance, we hope that the work is still of interest and use to the community. We have also added new analysis of the impacts of simulated changes to climate on the yields predicted by the model we present and hope that this adds some novelty and relevance.
+
+\review{
+The authors mention in different parts of the manuscript that they do not have ``enough'' data to inform some aspects of their model building and evaluation. Perhaps, they should have used a different example or scale for the proposed approach.
+}
+
+We except that ``enough'' is too vague a description. We have significantly changed the discussion on this point. We have chosen the largest volume of data that is available for a comparable region in terms of climatology and agricultural productivity. We believe that the model performance, as robustly measured using numerous techniques, demonstrates that the data is sufficient to constrain the parameters of the model and that the resultant model is usefully predictive.
+
+\review{
+The authors do not seem to believe that genetics (plant breeding) or agronomic management are important factors in achieving certain yield levels (LN 244). CO2 is expected to have a marginal effect on maize (C4).
+
+}
+
+Genetics and agronomic management clearly play a central role in determining yield levels. We have changed the line which implied otherwise. This study is an attempt to measure the mean impact of a changing climate on crop yields in the absence of other factors. This is clear given the large increases in yield which have occurred over the past half century. We have added some discussion to clarify this. While it might be possible to extend the model to include other factors in the future, the aim here is specifically to target the possible impacts of climate change.
+
+\review{
+
+While “yield” is academically an interesting quantity to analyze, crop markets also respond to the total production which is influenced by the total area planted. This is an aspect that is not considered in this analysis, which is driven by technological, economic and social factors. I do not find the “future work” section to be appropriate.
+}
+
+We have not considered economic impacts or causes here. We have added some discussion on this and some recommendation for how the model may be applied in this context to the future work section. It is true that we have not considered total production and area. We did this intentionally to mitigate the effects of economic decisions and to focus on the impact of climate. Current work to apply the model involves these factors which require significant new data sets and methods and are beyond the scope of this paper.
+
+\review{
+I do not find any special merit in the ``Bayesian'' aspect of this analysis. Given that temperature and precipitation are uncorrelated in this data set, how much better is this analysis than just a classic regression (with standard practices)?
+}
+
+The principle advantage of the Bayesian method applied here is the rigorous quantification of uncertainty. The full posterior on model parameters encapsulates the extent to which the model captures the yield response. Given the errors due to impacts from unmeasured quantities which impact the yield it is critical to measure the uncertainty in the model. Using Bayesian inference we can state the monthly yield response with reliable uncertainty estimates. We have now included the Bayesian $R^2$, which measures the fraction of the variance explained by the model in a Bayesian framework. This shows how moving beyond a point estimate is useful in situations where data do not tightly constrain model parameters compared to uncertainties in model inputs from simulations. Crucially, the Bayesian method incorporates the model's difference to the hypothetical `true' model into the uncertainty on the model parameters given the data. This is important when dealing with the highly non-linear biological systems. In the new simulations that take the results from global climate simulations, the results show that uncertainties in predicted effects on yields come both from uncertainties regarding the changes to temperature and precipitation, and uncertainties in model parameters.
+
+\review{
+Specific comments
+
+I will use the line numbers of the original paper
+
+LN 37 “might” twice
+}
+
+This has been corrected.
+
+\review{
+
+LN 70 “extreme” difficulty of predicting crop yields. This an exaggeration. Regional maize yields are a biological physical quantities which does not vary a great deal (they do not vary over orders of magnitude). For example, in some US states, the average might be around 10-11 Mg/ha.
+}
+
+We have rephrased this sentence. We replaced the vague and inaccurate statement with a clearer one concerning the specific aims of the paper.
+
+\review{
+Figure 2: Are yields in this figure “raw” or “normalized”?
+}
+
+These yields are normalised. We have now specified this in the figure caption. 
+
+\review{
+Figure B2 and Table B1. Show that the model does not have any ``special'' predictive ability.
+}
+
+These figures have changed since we have moved to using fractional mean anomalies. Nevertheless, we accept that the model can not predict yearly yields beyond that presented by Schlenker and Roberts (2009). The aim is to predict mean changes. The model shows that information beyond monthly temperature and precipitation must be included to predict at that level. However, the purpose of the work is to investigate the impact of changing mean temperatures and precipitation. The challenge of the work is due to the fact these are not the only factors contributing to yearly yield. Finally, we have added some new work on the model validation and showed how moving beyond point-estimates allows the model to capture around half of the variation in yearly yield. While the model does not have special predictive ability beyond Schlenker and Roberts (2009) it does capture the behaviour of that model and has been applied to new simulated changes to climate. This, combined with the detailed analysis of errors, goes beyond previous work.
+
+We are extremely grateful to the reviewers for their useful comments which have helped us to improve and expand the paper. We hope that we have addressed their comments sufficiently. Please don't hesitate to contact us with further queries.
+
+\closing{Yours faithfully,}
+
+\end{letter}
+\end{document}

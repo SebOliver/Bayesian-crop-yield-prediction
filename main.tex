@@ -1,0 +1,744 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    INSTITUTE OF PHYSICS PUBLISHING                                   %
+%                                                                      %
+%   `Preparing an article for publication in an Institute of Physics   %
+%    Publishing journal using LaTeX'                                   %
+%                                                                      %
+%    LaTeX source code `ioplau2e.tex' used to generate `author         %
+%    guidelines', the documentation explaining and demonstrating use   %
+%    of the Institute of Physics Publishing LaTeX preprint files       %
+%    `iopart.cls, iopart12.clo and iopart10.clo'.                      %
+%                                                                      %
+%    `ioplau2e.tex' itself uses LaTeX with `iopart.cls'                %
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% First we have a character check
+%
+% ! exclamation mark    " double quote  
+% # hash                ` opening quote (grave)
+% & ampersand           ' closing quote (acute)
+% $ dollar              % percent       
+% ( open parenthesis    ) close paren.  
+% - hyphen              = equals sign
+% | vertical bar        ~ tilde         
+% @ at sign             _ underscore
+% { open curly brace    } close curly   
+% [ open square         ] close square bracket
+% + plus sign           ; semi-colon    
+% * asterisk            : colon
+% < open angle bracket  > close angle   
+% , comma               . full stop
+% ? question mark       / forward slash 
+% \ backslash           ^ circumflex
+%
+% ABCDEFGHIJKLMNOPQRSTUVWXYZ 
+% abcdefghijklmnopqrstuvwxyz 
+% 1234567890
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\documentclass[12pt]{iopart}
+\newcommand{\gguide}{{\it Preparing graphics for IOP journals}}
+%Uncomment next line if AMS fonts required
+%\usepackage{iopams} 
+\usepackage{xcolor}
+\usepackage{newtxtext, newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+
+\usepackage{natbib}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\DeclareGraphicsExtensions{ .pdf, .png}
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+%\usepackage{breqn}
+\usepackage{hyperref}
+
+\usepackage{lineno}
+\linenumbers
+
+%uncomment appropriate defs for annotated/not annotated copy
+%\newcommand{\remove}[1]{
+%    {\color{red} \sout{#1}}
+%    }
+
+\newcommand{\remove}[1]{}
+
+%\newcommand{\add}[1]{   
+%    {\color{green} #1}
+%    }
+\newcommand{\add}[1]{#1}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+%\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\title[Bayesian crop yield prediction]{An empirical, Bayesian approach to modelling the impact of weather on crop yield: maize in the US}
+
+% Possible alternative: Exploring Bayesian models of maize yield response to temperature and precipitation
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[Shirley et al.]{
+%\parbox{\linewidth}{
+Raphael Shirley,$^{1,2,3}$ %\thanks{E-mail: raphael.shirley@sussex.ac.uk }
+Edward Pope,$^{4}$
+Myles Bartlett,$^{5}$
+Seb Oliver,$^{1,2}$
+Novi Quadrianto,$^{5}$
+Peter Hurley,$^{6}$
+Steven Duivenvoorden,$^{1,2}$
+Phil Rooney,$^{6}$
+Adam B. Barrett,$^{2}$
+Chris Kent,$^{4}$
+and James Bacon.$^{4}$
+%}
+}
+
+\\
+\\
+% List of institutions
+\parbox{\linewidth}{
+{\scriptsize
+$^{1}$Astronomy Centre, Department of Mathematical and Physical Sciences, University of Sussex, UK\\
+$^{2}$Data Intensive Science Centre, Department of Mathematical and Physical Sciences, University of Sussex, UK\\
+$^{3}$Instituto de Astrof\'{i}sica de Canarias, E-38205 La Laguna, Tenerife, Spain;\\ Universidad de La Laguna, Dpto. Astrof\'{i}sica, E-38206 La Laguna, Tenerife, Spain\\
+$^{4}$Met Office Hadley Centre, Exeter, UK\\
+$^{5}$Predictive Analytics Lab, Department of Engineering and Informatics, University of Sussex, UK\\
+$^{6}$Data Javelin Ltd, Data science consultancy, Brighton, UK
+}
+}
+% These dates will be filled out by the publisher
+%\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+%\pubyear{2019}
+
+% Abstract of the paper
+%\section*{General comments}
+%{\color{green}Seb: I think we need some consistency around using ``yield" or ``yields".  I guess if we are talking about one crop it should be yield and many crops yields?  But then is our model generic for multiple crops?  Alternatively one could decide that it is singular throughout?}
+%Raph: I went for using singular in general
+
+\begin{abstract}
+We apply an empirical, data-driven approach for describing crop yield as a function of monthly temperature and precipitation by employing generative probabilistic models with parameters determined through Bayesian inference. Our approach is applied to state-scale maize yield and meteorological data for the US Corn Belt from 1981 to 2014 as an exemplar, but would be readily transferable to other crops, locations and spatial scales. Experimentation with a number of models shows that maize growth rates can be characterised by a two-dimensional Gaussian function of temperature and precipitation \add{with monthly contributions accumulated over the growing period. This approach accounts for non-linear growth responses to the individual meteorological variables, and allows for interactions between them}. Our models correctly identify that temperature and precipitation have the largest impact on yield in the six months prior to the harvest, in agreement with the typical growing season for US maize (April to September). Maximal growth rates occur for monthly mean temperature 18-19$^\circ$C, corresponding to a daily maximum temperature of 24-25$^\circ$C (in broad agreement with previous work) and monthly total precipitation 115 mm. Our approach also \add{provides}\remove{facilitates} a self-consistent \add{way of} \remove{investigation of}\add{investigating} climate change impacts on \add{current} US maize \add{varieties}\remove{yield} in the absence of adaptation measures. Keeping precipitation and growing area fixed, a temperature increase of $2^\circ$C, relative to 1981-2014, results in the mean yield decreasing by 8\%, while the yield variance increases by a factor of around 3.  We thus provide a flexible, data-driven framework for exploring the impacts of natural climate variability and climate change on globally significant crops based on their observed behaviour. In concert with other approaches, this can help inform the development of adaptation strategies that will ensure food security under a changing climate.
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+Bayesian inference -- crop yield -- weather -- climate
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Establishing the climate risk to the global production of individual crops, and how that might change in the future, is an essential requirement for building a resilient and robust food system that ensures food security for all \citep[][]{fao:2002}. %However, quantifying this risk represents a significant challenge, primarily because limited data records hinder our ability to identify causal 
+This requires the characterisation of the relationship between meteorological and food production variations. 
+
+There is a growing consensus that a range of methods are needed to accurately assess climate impacts on crop yield \citep[e.g.][]{lobell:2017, tigchelaar:2018, snyder:2018}.  Broadly there are two complementary approaches to this:  physiological processes-based models; or data-driven, statistical models.
+
+Data-driven, statistical methods can be rapidly applied when there is yield data, even where there is limited laboratory-based understanding of the crop. Physiological models, however, can be extrapolated into situations where there is limited yield data.
+
+Previous statistical methods \citep[e.g.][]{schlenker:2009, lobell:2010, welch:2010} capture the broad influence of weather on crop yield based on linear relationships, calibrated using historical data. Non-linear models have been explored based on temperature \citep[e.g.][]{cutforth:1990, yin:1995, wang:1998, yan:1999, streck:2007, zhou:2018} and precipitation  \citep[e.g.][]{cakir:2004, ge:2012, lobell:2013, carter:2016, song:2019}.
+
+By deriving an empirical \add{and non-linear} ``growth response function'' that \remove{maps}\add{relates} temperature and rainfall conditions to crop growth, the approach developed here aims to complement both process-based crop models and existing statistical approaches. 
+
+
+
+%For this study, we use monthly (rather than daily) data for two reasons: firstly, to extract the typical crop response to large-scale meteorological conditions; secondly, to test the performance of the model with limited data as a way of assessing its potential utility in regions where historical weather records may be less complete.
+
+
+%\add{To date,} the viability of a data-driven approach for describing maize yield as a function of monthly temperature and precipitation has not been demonstrated. \add{However,} this capability could would allow us to gain \add{new} insight into the potential implications for maize yield under a changing climate since \remove{current simulations do not capture}\add{we have more confidence in projected changes on monthly rather than daily timescales}\remove{daily climatalogical variation}. 
+
+
+%{Ed - Trying to motivate our approach a bit more, and explaining why we are testing the procedure for US maize, and that this can provide info for crop breeders and agronomists to target specific developments}.
+
+%{\color{green} [not sure if this sentence belongs in the introduction and, if so, if this is the right place]} {Crucially, the output model parameters can be compared to known 
+
+
+%{\color{green} this para needs to be a bit clearer, particularly the second sentence.  I guess the point being made is that different methods are complementary, but this message seems slightly implicit rather than explicit - and in fact it is hard to pick out exactly what is being said}
+%Raph - added note that absence of impact of CO2 is main drawback of empirical models compared to process based models (taken from lobell:2017)
+
+
+
+This work is part of a trend to apply advanced statistics and machine learning methods to climatological and agricultural data sets. For example, \citet{you:2017} demonstrated the application of deep learning and Gaussian processes to predict yield based on remote imaging. 
+
+Bayesian inference, is an established approach for inferring the posterior values of model parameters, based on prior assumptions and new data. The advantage of Bayesian inference is it allows robust computation of errors, which is especially critical when the aim is to model the influence of predicted climate data which are themselves subject to large uncertainties. 
+
+
+More generally, Bayesian inference is frequently applied to problems of model parameter estimation with noisy data in other fields such as astronomy \citep{Hurley:2016}. In this paper, we are determining generative probabilistic models, which have a greater ability to accurately capture uncertainty than the more common discriminative models in machine learning.  
+
+
+The aim here is to present a simple and robust model which captures the impact of mean temperature and precipitation changes on mean yield. Developing a flexible method for investigating the influence of present-day natural climate on yield allows us to explore the direction and scale of climate change impacts in the absence of adaptation.
+
+
+Here, we use these methods to model the response of US maize to temperature and precipitation, which has been widely studied \citep[e.g.][]{schlenker:2009, hatfield:2011, roberts:2012, lobell:2013, sanchez:2014, hatfield:2015, Partridge:2019}. We aim to first demonstrate an ability to capture key aspects of present-day maize yield variability in the US, and secondly to explore the implications of climate change for the current maize varieties in the absence of adaptation. 
+
+
+The paper is structured as follows: section~\ref{sec:data} describes the yield and meteorological data, followed by section~\ref{sec:models} which presents the models, demonstrating their strengths and weaknesses. Section~\ref{sec:impacts} applies the model \remove{with increments in temperature and precipitation}\add{to an ensemble of climate projections} as a first step to predict the \remove{consequence}\add{influence} of climate change on \remove{agricultural}yield \add{for present day maize varieties}. Finally, section~\ref{sec:conclusions} summarises the work and our main conclusions.
+
+
+
+\section{Data}
+\label{sec:data}
+
+\add{Numerous studies have demonstrated the importance of temperature in maize development \citep[e.g.][]{cross:1972, coelho:1980, daughtry:1984, cutforth:1990, bonhomme:1994}, with quantities such as Growing Degree Days (GDD) offering better predictions of phenological changes and yield than calendar days after planting. Water stress is also associated maize yield reductions \citep[e.g.][and references therein]{cakir:2004, ge:2012, lobell:2013, carter:2016, song:2019}, suggesting that any model should incorporate the effects of both temperature and precipitation.}
+
+We \add{proceed} assuming that climate variability is \add{a major}\remove{the dominant} driver of the \remove{resulting}\add{observed} yield anomalies, and do not attempt to separate direct physiological influences from non-direct impacts resulting from air quality or pests \citep{Gornall:2010}.
+
+We use annual maize yield and monthly temperature and rainfall data aggregated to the state scale. This minimises the impact of local variations in both meteorology and planting date \citep[e.g.][]{schlenker:2009, lobell:2010}. For future work, the model outputs are compatible with the large-scale atmospheric circulation patterns that can be reliably simulated by global climate models. The relatively low data requirements, compared to daily climatology, also support model flexibility and computationally efficiency. Constraining the model parameter posteriors depends on the sampling of temperature precipitation space, the data can only constrain features which are present in the data. We therefore draw observations from across the US Corn Belt, covering Indiana, Illinois, Iowa, Ohio, Minnesota and Nebraska to maximise the sampling while being confident the regions use similar agricultural techniques and have broadly comparable climatology.
+
+The spatial distribution of maize cultivation (both irrigated and rained) was extracted from the MIRCA2000 dataset \citep{Portmann:2010} and used to derive area-weighted climate variables. Monthly mean temperature and monthly total precipitation are based on CRU TS3.1/3.21 \citep{Harris:2014} and GPCC v6 \citep{Schneider:2014} and extracted for 1981-2014 from within the WFDEI dataset \citep{Weedon:2014}. An overview of the data is shown in Table~\ref{table:data}. 
+
+\begin{table*}
+\centering
+\caption{
+Standard deviations of monthly temperature and precipitation relative to the corresponding monthly climatological mean across all months, and the standard deviation of the yearly yield anomalies. Yield information is available from 1960, and the gridded WFDEI data extends back to 1980. Values shown here are from 1980 to present. Standard deviations in the yield are for anomalies from the rolling five year median yield.}
+
+
+\label{table:data}
+\vskip 0.15in
+\begin{tabular}{llll}
+State  & 
+Monthly $\sigma_{\Delta T}$   & 
+Monthly $\sigma_{\Delta P}$   & 
+Yearly $\sigma_{\Delta Y}$   \\
+
+& [$^\circ$C] & [mm] & [t ha$^{-1}$]\\
+\hline
+Indiana & 1.93 & 35.25 & 1.68 \\ 
+Illinois & 2.02 & 36.39 & 1.78 \\ 
+Ohio & 1.87 & 31.05 & 1.67 \\ 
+Nebraska & 2.21 & 30.90 & 1.95 \\ 
+Iowa & 2.23 & 33.55 & 1.92 \\ 
+Minnesota & 2.39 & 29.06 & 2.06 \\ 
+\end{tabular}
+\end{table*}
+
+In all regions there has been a long-term increase in maize yield since 1960, on top of which year-to-year and multi-year variations are evident. To remove the long-term trend and decadal-scale variability, which can be driven by climate and non-climate factors \citep[e.g.][]{hawkins:2013, ray:2015} we use yield `anomalies'. For median yield anomalies the centred 5-year rolling median yield in each region is subtracted from the time series. The remaining yield fluctuations retain the units of tonnes per hectare (t/ha). We also compare \remove{anolies}\add{anomalies} from the 5-year mean, fractional anomalies from 5-year mean (which are unit-less), and linearly detrended anomalies from the least squares linear trend across all regions. \add{\citet{finger:2010}, applied robust detrending techniques, which are designed to perform regression in the presence of outliers. Such an approach here could be used to perform the linear detrending, however it would still rely on the assumption of a linear productivity increase.}
+
+The total yield anomaly in year $j$, $\Delta Y_j$, is the difference between the yield for year $j$, $Y_j$, and the rolling five-year median or mean $\widetilde{Y}_j = (Y_{j-2},Y_{j-1},Y_{j},Y_{j+1},Y_{j+2} )$. A feature of using the rolling 5-year median anomalies is that, on average, one in five anomalies will be exactly zero. For this reason we compare all four forms of yield anomaly. The choice of de-trending has some influence on the posterior parameter values and, therefore, the model performance as described in section~\ref{sec:validation}. The temperature and precipitation anomalies for each month are calculated by subtracting the corresponding monthly climatological mean for 1981-2014. 
+
+The relationship between the yield and the temperature and precipitation anomalies forms the basis of our linear models. These provide a useful comparator for more complex models that relate yield to temperature and precipitation. Table~\ref{table:data} summarises the variation around typical values for monthly temperatures and precipitation and annual maize yields. Figure~\ref{fig:yield_anomalies} illustrates how these two measures are related, while Figure~\ref{fig:median_vs_frac_anoms_noline} shows the relation between the 5-year median anomaly and the 5-year fractional mean anomaly. Later, we compare what impact the choice of target yield has on the performance of models.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/yields_vs_mean_anoms}
+\caption{\label{fig:yield_anomalies} The annual yield for all six US states used in this work (Indiana, Illinois, Ohio, Nebraska, Iowa and Minnesota), alongside the anomalies derived from subtracting the running five-year median for the yield data set from 1960 to 2014. We also show the linear fit which is used to scale all the anomalies to the year 2014, noting that this is different to the moving 5-year median.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/median_vs_frac_anoms_noline}
+\caption{\label{fig:median_vs_frac_anoms_noline} Comparison between the 5-year median anomalies and the 5-year mean fractional anomaly. A feature of the 5-year median anomaly is that roughly one fifth of all anomalies are exactly zero, which introduces non-Gaussian behaviour. In contrast, a benefit of using the fractional difference to the 5-year mean is that we might expect anomalies to increase in proportion to the mean yield. The preferred model is the one which is most highly correlated with temperature and precipitation.
+}
+\end{figure}
+
+Previous analysis of these data by \cite{kent:2017} revealed that yield reductions greater than 10\% are strongly associated with mean temperatures during June, July and August exceeding 23 $^\circ$C, combined with total precipitation less than 240 mm. In short, warmer and drier than normal conditions were associated with reduced maize yield in the US Cornbelt. There was also evidence that excess precipitation during the same period could predict yield reductions; however, this relationship was more tentative. %{\color{green} The following sentence is more about our method than the data - should this go somewhere else?} The approach developed here aims to explore the context for these results through providing a more general and continuous description of the crop's response to temperature and precipitation, while building on the threshold-based approach demonstrated in \cite{kent:2017}. 
+% Raph - moved it to the description of 2d model in models
+
+Figure~\ref{fig:real_yield_responses} shows the maize yield time series, normalised to 2007 linear trend levels, as a function of yearly average temperature and precipitation. %{\color{green} not quite sure what coarse-graining means and/or how we avoid it}  
+%Raph - it means averaging over months - I have added a description.
+Even at this level of temporal coarse-graining, (i.e. averaging temperature and precipitation anomalies over six months), there is evidence that warmer and drier conditions are associated with significantly reduced maize yield, and the basic features that any model should try to capture are evident. 
+%{\color{green} The following sentence is more about our method than the data - should this go somewhere else?} In this paper we hypothesise that the observed relationships can be characterised with a Gaussian function of temperature and precipitation applied each month during the growing season \citep[c.f.][]{hatfield:2015, korres:2016, tigchelaar:2018}.
+% Raph - I moved it to the description of the 2d model
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/mean_real_data_scatter}
+\caption{\label{fig:real_yield_responses} Mean maize yield, normalised to the 2007 linear trend value, as a function of mean monthly temperature and precipitation for the months April to September between 1980 and 2007 for Indiana, Illinois, Ohio, Nebraska, Iowa and Minnesota.}
+\end{figure}
+
+\section{Methods and models}
+\label{sec:models}
+
+\add{It is well known that both temperature and water availability play influential roles in determining maize growth and yield. Temperature, in particular, affects the rate of phenological development \citep[e.g.][]{cross:1972, coelho:1980, daughtry:1984, cutforth:1990, bonhomme:1994}, with a range of studies demonstrating that growth and yield have a non-linear dependence on both daily temperature and accumulated thermal sums \citep[e.g.][]{cutforth:1990, streck:2007, schlenker:2009, lobell:2013, zhou:2018}. The non-linear response often incorporates cardinal temperatures which describe minimum, optimal and maximum thresholds for a particular crop \citep[e.g.][]{yin:1995, wang:1998, zhou:2018}. While many models make use of standard cardinal temperatures \citep[e.g.][]{yin:1995}, this work uses the observed data to estimate the optimal growing temperature.} 
+
+\add{Water stress is also associated with maize yield reductions \citep[e.g.][and references therein]{cakir:2004, ge:2012, lobell:2013, carter:2016, song:2019}, and can be affected by precipitation and temperature as well as soil and land management strategies. The joint dependence on precipitation and temperature can be understood in terms of the plant's demand for water, which is related to vapour pressure deficit (VPD) between the saturated plant leaf and the ambient air \citep[e.g.][]{roberts:2012, lobell:2013}. Higher VPD tends to occur on warmer days with lower humidity, promoting higher transpiration rates from the plant. The plant may respond to reduce water loss by reducing stomatal conductance, but this can inhibit metabolic activity and carbon assimilation, potentially resulting in yield failure \citep[e.g.][]{song:2010, ge:2012, lobell:2013, song:2019}. The empirical response of US maize yield to precipitation is weaker than for temperature \citep[e.g.][]{lobell:2013}, but water availability remains an important consideration and we, therefore, include precipitation in the models outlined below.}
+
+\add{Building on the previous research outlined above, the models developed here explore yield dependence on monthly temperature and rainfall accumulated during the growing season, making use of both linear and non-linear models trained on monthly weather observations. This approach allows us to explore the simultaneous influence of monthly temperature and precipitation variations on US maize, as well as the effect of interactions between these two variables.}\remove{Alongside considering different approaches for estimating yield anomalies, we have also investigated a number of different statistical models for predicting annual US maize yield based on monthly temperature and precipitation during the growing season.} As we add complexity to these models, we can capture more features in the data, but the model may also be subject to parameter degeneracies and over-fitting, given the limited volume of data we have chosen to fit against. The classes of model investigated here are:
+
+\begin{itemize}
+\item Linear models, predicting yield \add{using a sum over the growing season of the monthly contributions to growth} based on a linear independent function of observed temperature and precipitation.
+\item Gaussian process regression, predicting yield using correlations between each monthly temperature and precipitation and their correlation with the target yield.
+\item Two-dimensional Gaussian model, predicting yield \add{using a sum over the growing season of the monthly contributions to growth based on a two-dimensional Gaussian function (i.e. non-linear) of observed temperature and precipitation.}
+\end{itemize}
+
+The linear model was used to determine which months were most closely correlated with yield. Using this as a basis, the parameters of the linear and two-dimensional Gaussian models were initially inferred using least squares minimisation, and subsequently using Bayesian inference to investigate the full posterior on the model parameters. In principle, it is possible to use the regression coefficients to extract information about the crop's response to temperature and precipitation, hereafter referred to as the growth response function. However, using the Gaussian models described below, we are able to make a more direct estimate of the growth response function.
+
+Gaussian process regression was used as a baseline to measure the capacity of meteorological data to predict the yield. This is because it is a general form of regression which does not make any assumptions about the `true' model as parameterised models must. 
+
+% Raph - I moved the details to the appendix. It was strange that we had more maths for the linear model which isn't presented in the results and allowed us to lose 250 words....
+
+%\subsection{linear models}
+%\label{sec:linear} % used for referring to this section from elsewhere
+
+%The first model investigated here used multiple linear regression to predict yield anomalies as a function of monthly temperature and precipitation anomalies. The physical interpretation of this approach is that the regression coefficients capture the crop's underlying response to climate variables such that the yield anomaly is well determined by that year's temperature and precipitation throughout the growing season. In principle, it is then possible to use the regression coefficients to extract information about the crop's response to temperature and precipitation, hereafter referred to as the ``growth response function''. This method was used to  determine empirically which months to include in training and prediction.  The tightest correlation was between the months of April and September --  as expected under the assumption that the months leading up to and including the harvest are critical for determining yield. The linear model is fully described in \ref{sec:appendix_linear}.
+
+
+
+%\subsubsection{Maximum likelihood}
+%Initially we used simple least squares regression to fit the models. FIGURE???
+
+%\subsubsection{Bayesian inference}
+%We investigate the posterior on the model parameters using the STAN programming language. This allows the computation of a full sample from the posterior, meaning the probability distribution of the parameters given the data is well known. If the posterior is very wide then the data is not sufficiently constraining the parameters. It also gives a robust measure of errors on the parameter values that we provide.
+
+%\subsection{Gaussian process regression}
+%A Gaussian process is a non-parametric distribution over an infinite collection of random variables such that any finite subset constitutes a multivariate normal distribution \citep{rasmussen:2005}. 
+%Such models are completely specified by their second-order statistics, namely the mean and covariance, though most often assume the former to be zero everywhere and rely entirely on the latter to evaluate the predictive distribution. The covariance function measures similarity in the input space; a common choice of such is the squared exponential covariance function which we employ here. 
+%Gaussian processes serve as a general procedure for predicting non-linear behaviour and functions as a baseline with which to compare the predictive power of any physically-motivated parameterised model we develop. We use them here to provide a baseline for the power of temperature and precipitation to predict yield. This is used in order to test the sufficiency of linear models and our suggested generative model.
+
+%section{Gaussian growth curve as function of temperature}
+%To begin with, we investigated a model based purely on temperature. Modelling yield as a Gaussian function of temperature with Gaussian noise, we can capture some variation in the yield. We know that the yield is related to both temperature and precipitation so we quickly moved on to investigate a two dimensional response function.
+%Figure~\ref{fig:1d_Gauss_temp_post_sample_growth_curve} shows a posterior sample of model response for a single month. The actual data, shown in figure~\ref{fig:yield_responses} clearly shows that there is some relation between precipitation and yield so we then went on to investigate a model assuming yield is two-dimensional Gaussian function of temperature and precipitation. The data is not sufficient to justify a more complicated model and a Gaussian has the key features of peaking at some ideal conditions and tending to zero far from them.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.45\textwidth]{./figures/1d_Gauss_temp_post_sample_growth_curve}
+%\caption{\label{fig:1d_Gauss_temp_post_sample_growth_curve} A sample of posterior Gaussian parameter values presented as growth curves as a function of temperature value for a model of yield as a function of temperature only.}
+%\end{figure}
+% Is this figure the same as below? In which case, should we remove it? 
+
+
+\subsection{Growth as function of temperature and precipitation}
+
+After initial investigations using the linear model and Gaussian process regression to identify \remove{key months}\add{those months where climatology is correlated with the yield}, we extended the approach to develop a more physically-motivated model \add{which allows for non-linear responses to both temperature and precipitation}. As a heuristic, we assume there is an optimum temperature and precipitation (subject to other variables being held constant, e.g. solar radiation, soil type and CO$_{2}$ concentration) away from which the plant's growth rate declines \citep[c.f.][]{cutforth:1990, yin:1995, wang:1998, hatfield:2015, korres:2016, tigchelaar:2018}. \remove{For generality, we proceed by representing }\add{Here we model the monthly contribution to yield} \remove{this growth response function} as a time-independent two-dimensional Gaussian \add{function of mean monthly temperature and precipitation}. \add{This allows us to implicitly incorporate the effects of exposure to cold and heat as well as insufficient and excess precipitation, without explicitly needing to derive critical thresholds (e.g. cardinal temperatures) from the data.} Since the function is time-independent it represents the crop's typical response to growing conditions averaged across the entire growing season. For an individual state, 30 years of monthly data is insufficient to fully sample the $T$, $P$ plane around the peak of the Gaussian; to combat these data limitations we combine information from the different states. The model is described in full in section~\ref{sec:2d_descrip_appendix} and in the notebooks which execute the code and are available on GitHub.
+
+The approach developed here\remove{ seeks to provide the context for}\add{ explains} the results in figure~\ref{fig:real_yield_responses} through developing a more general and continuous description of the crop's response to temperature and precipitation, while maintaining consistency with the threshold-based approach demonstrated in \cite{kent:2017}. \remove{More generally, the}\add{This} approach shares some similarities with \cite{snyder:2018} who developed an emulator of process-based crop models based on Agricultural Model Intercomparison and Improvement Project (AgMIP) Coordinated Climate-Crop Modeling Project (C3MP) data.
+
+Freely fitting the Gaussian parameters for each month during the calendar year led to large unconstrained posteriors on the parameters. This is predominantly a consequence of the\remove{ self-imposed limited} volume of data relative to the number of parameters, and means that further assumptions are needed to reduce the number of free parameters. One option is to assume the same functional shape for each month, while allowing the critical temperatures to change during different growth stages \citep[e.g.][]{hatfield:2011, sanchez:2014}. This assumption reduces the model parameters by a factor of twelve. Based on the growing season for US maize, we also restricted equation~\ref{eqn:yield_sum} to sum over months April to September (months 4-9).\remove{, which are the most highly correlated with yield.}\add{This was determined using the linear response model which showed that months 1-3 had a correlation with yield that was consistent with zero.} We experimented with various priors and settled on wide Gaussian priors around the means of the measurements, checking that the priors did not have a large influence on the posterior.
+
+In the next two subsections we describe the models, while their performance is discussed in \ref{sec:validation}.
+
+\subsection{Linear model}
+\label{sec:appendix_linear}
+
+\remove{As stated above, the}\add{The} first model investigated here used multiple linear regression to predict yield anomalies as a function of monthly mean temperature and precipitation anomalies \add{, with their contributions to maize growth summed over the growing season}. The physical interpretation of this approach is that the regression coefficients capture the crop's underlying response to climate variables such that the yield anomaly is determined by that year's temperature and precipitation throughout the growing season. This method was used to empirically determine the months to include in training and prediction. The tightest correlation was between the months of April and September -- as expected under the assumption that the months leading up to and including the harvest are critical for determining yield.
+
+In this linear model\add{ and the later two dimensional Gaussian model}, the yield anomaly in year $j$ is given by the sum of the monthly mean growth rates, $\dot{y}_{i,j}$, for each month $i$ during the growing season:
+
+\begin{equation}
+\Delta Y_j = \sum_{i=1}^{N} \Delta y_{i,j} = \sum_{i=1}^{N} \dot{y}_{i,j}\Delta t_i
+\end{equation}
+
+Where $\Delta t_i$ is the duration of the monthly interval, and the growth rate is some function of the monthly temperature anomaly $\Delta T_i$ and precipitation anomaly $\Delta P_i$, defined as the difference of the month $i$ measurement relative to the 30-year mean for that month. 
+
+\remove{While the analysis considers only temperature and precipitation influences, the derived growth rate actually represents the projection of the full multi-dimensional growth response function onto the temperature and precipitation axes. The factors that are not included in the fitting procedure (including solar radiation, soil moisture and type) will contribute to the scale of variance in model prediction residuals compared to true values.}
+
+Under these assumptions, the growth rate can be expressed as
+\begin{align}
+\dot{y}_i &= f(T_i, P_i) \\
+& \approx s_t(\Delta T_i) + s_p(\Delta P_i)
+\end{align}
+The approximation assumes that the function is slowly changing on the scale of the temperature and precipitation anomalies such that a Taylor expansion to first order is sufficient and that the variations with temperature and precipitation are independent of each other. In this limit, the regression coefficients\add{, $s_t$ and $s_p$,} will be related to the gradient of the growth response and are, themselves, functions of temperature and rainfall\add{ anomalies}.
+
+\subsection{Gaussian process regression}
+\label{sec:GP_descrip_appendix}
+A Gaussian process is a non-parametric distribution over an infinite collection of random variables such that any finite subset constitutes a multivariate normal distribution \citep{rasmussen:2005}. Such models are completely specified by their second-order statistics, namely the mean and covariance, though most often assume the former to be zero everywhere and rely entirely on the latter to evaluate the predictive distribution. The covariance function measures similarity in the input space; a common choice for this is the squared exponential covariance function which we employ here. 
+
+Gaussian processes serve as a general procedure for predicting non-linear behaviour; as such it provides a baseline \remove{with}\add{against} which to compare the predictive power of any physically-motivated parameterised model. Here, we use the Gaussian process model to provide a baseline for the power of temperature and precipitation to predict yield. As such, this helps test the sufficiency of linear models and our suggested generative model outlined below.
+
+\subsection{Two-dimensional Gaussian yield response function}
+\label{sec:2d_descrip_appendix}
+
+%%Ed - I think this section needs a brief introduction.. Had a go, but see what you think...
+This section outlines the assumptions and mathematical formulation that underpin the bivariate Gaussian yield response function. Validation metrics shown in section~\ref{sec:validation} demonstrate that yield predictions made by the bivariate Gaussian outperform those for both the linear and the Gaussian process models. For that reason, this discussion goes into more depth than the previous section.
+
+\add{Being non-linearly dependent on temperature and precipitation, the bivariate Gaussian model shares some common features with \cite{cutforth:1990, streck:2007, yin:1995, zhou:2018}. However, there are several major differences to previous work: firstly, the model incorporates both temperature and precipitation, allowing for potential interactions between their impacts on growth; secondly, the non-linear function is Gaussian rather than a Beta function \citep[e.g.][]{yin:1995, streck:2007}, which avoids the need to estimate explicit minimum and maximum thresholds for temperature and precipitation since the growth rate tend to zero for large deviations from optimal growing conditions; thirdly, the contributions to maize growth are calculated and summed on monthly intervals, rather than daily as for Growing Degree Days \citep[e.g.][]{zhou:2018}.
+
+The mathematical structure of the model is as follows.} The $k$ data points for each year that we are fitting with the model are 
+\begin{equation}
+X_k = (Y_k, \boldsymbol T_k, \boldsymbol P_k)
+\end{equation}
+where $\boldsymbol T_k$ and $\boldsymbol P_k$ are vectors with the temperature and precipitation values, respectively, for each month of the year. Under this model the monthly yield response (increase in final yield due to that month's conditions) is
+\begin{equation}
+%\exp\left(-\frac{1}{2} ({\mathbf x}-{\boldsymbol \mu})^\mathrm{T} {\boldsymbol \Sigma}^{-1}  ({\mathbf x}-{\boldsymbol \mu})\right)
+%\dot{y}(T,P) = \frac{\exp\left(-\frac{1}{2} ({\mathbf x}-{\boldsymbol \mu})^\intercal {\boldsymbol \Sigma}^{-1}  ({\mathbf x}-{\boldsymbol \mu})\right)}{\sqrt{(2\pi)^k | \boldsymbol \Sigma|}}
+\dot{y}(T,P) =  \exp\left(-\frac{1}{2} ({\mathbf x}-{\boldsymbol \mu})^\intercal {\boldsymbol \Sigma}^{-1}  ({\mathbf x}-{\boldsymbol \mu})\right)
+\end{equation}
+where
+\begin{equation}
+\mu =  \left[ {\begin{array}{c}
+   \mu_T \\
+   \mu_P \\
+  \end{array} } \right]
+\end{equation}
+and
+%\begin{equation}
+%\boldsymbol\Sigma =   \left[ {\begin{array}{cc}
+ %  \Sigma_{TT} & \Sigma_{TP} \\
+%   \Sigma_{TP} & \Sigma_{PP} \\
+%  \end{array} } \right]
+%\end{equation}
+%or
+\begin{equation}
+\label{eqn:2d_gaussian_sigma}
+    \boldsymbol\Sigma = \left[ {\begin{array}{cc}
+    \sigma_T^2 & \rho \sigma_T \sigma_P \\
+    \rho \sigma_T \sigma_P  & \sigma_P^2 \\
+    \end{array} } \right]
+\end{equation}
+%Using the latter notation the function is
+%\begin{dmath}
+%\dot{y}_i ( T_i , P_i) = \frac{1}{2 \pi  \sigma_{T_i} \sigma_{P_i} \sqrt{1-\rho^2}}  \exp \left(  -\frac{1}{2(1-\rho^2)}\left[  \frac{(T_i-\mu_{T_i})^2}{\sigma_{T_i}^2} +  \frac{({P_i}-\mu_{P_i})^2}{\sigma_{P_i}^2} - \frac{2\rho({T_i}-\mu_{T_i} )({P_i}-\mu_{P_i})}{\sigma_{T_i} \sigma_{P_i}}  \right]  \right)
+%\end{dmath}
+The predicted yield is then
+\begin{equation}
+\label{eqn:yield_sum}
+Y = \sum_i n_i \dot{y}_i
+\end{equation}
+where, $n_i$ is the normalisation for the $\it{i}$th month. There are also many variations on this general structure; for instance instead of using all twelve preceding months we can use six, as with the linear regression model. We can also force the parameters of the Gaussian shape to be constant across time while allowing the normalisation to vary. This latter option assumes that favourable conditions are a constant over the growing period but will allow for months closer to harvest to have a more significant impact on the yield. The final model we present assumes that the normalisation is fixed across the six months prior to harvest.
+
+Mathematically, the likelihood (of one data point) is the probability of the data given the model,
+\begin{equation}
+%P( Y,\boldsymbol{T}, \boldsymbol{P} | M(\mu_T,\mu_P,\Sigma_{TT},\Sigma_{TP},\Sigma_{PP}))
+P\{ Y, \boldsymbol{T}, \boldsymbol{P} | M\left(\boldsymbol{n}, \mu_T, \sigma_{T}, \mu_P,\sigma_{P},\rho\right) \}
+\end{equation}
+Assuming that we know $\boldsymbol{T}$ and $\boldsymbol{P}$, the probability of one yield data point is 
+\begin{equation}
+P\{ Y | M(\boldsymbol{n}, \mu_T, \sigma_{T}, \mu_P,\sigma_{P},\rho),  \boldsymbol{T}, \boldsymbol{P} \}
+%P( Y, | M(\mu_T,\mu_P,\Sigma_{TT},\Sigma_{TP},\Sigma_{PP},  \boldsymbol{T}, \boldsymbol{P}))
+\end{equation}
+In this case, the likelihood is 
+\begin{equation}
+\textrm{ln} \mathcal{L} = \sum_k \textrm{ln} \left( \mathcal{N}(Y - \sum_i n_i \dot{y}_i, \sigma ) \right)
+\end{equation}
+Although the model is \remove{formulated using}\add{a function of} monthly mean temperatures, figure~\ref{fig:daily_vs_monthly} shows how the parameters can be related to daily maximum temperatures through their strong correlation with monthly mean temperatures. The likelihood and the prior jointly determine the posterior. The Stan language and its Python wrapper PyStan are used here to sample the posterior model parameter space \citep{carpenter:2017}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/daily_max_vs_monthly_mean_temp2.png}
+\caption{\label{fig:daily_vs_monthly} Dependence of mean daily maximum temperature on monthly mean temperature for Indiana, Illinois, Ohio, Nebraska, Iowa, Minnesota. The Pearson correlation coefficient is 0.998, the gradient is 0.967 $\pm$ 0.024 and the intercept 6.863 $\pm$ 0.34. As a result, a monthly mean temperature of 18--19~$^\circ$C translates to an optimal daily maximum of 24--25~$^\circ$C. }
+\end{figure}
+
+
+\subsection{Model Validation}
+\label{sec:validation}
+
+This section outlines a selection of methods and procedures for assessing the predictive performance of the statistical models described in the previous section. We evaluate the robustness of our model using a suite of cross-validation schemes. The first method uses Bayesian p-values to quantify how unlikely the observed yield is, given the model. If the observed data is unlikely given the proposed model, the differences between them will be large compared to the uncertainty in the prediction. Figure~\ref{fig:pvalues_all} shows these p-values for each year and state. This method does not split the data set into training and testing sets so over-fitting is a possibility. We, therefore, investigate a number of more rigorous approaches below.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/pvalues_all}
+\caption{\label{fig:pvalues_all} The Bayesian p-values for each year's yield measurement to demonstrate the performance of the model. This is equivalent to the distance of the true value to the predicted value in terms of model variance.If the model is capturing behaviour these values will be normally distributed with unity variance.}
+\end{figure}
+
+%% Ed - in the caption it would be good to say what values of P are "good" and which are not.
+
+Since our model is time-stationary by construction, we first consider methods which do not aim to remove temporal dependencies. The most straightforward of these is to randomly split the data such that eighty percent of the years are used to infer the regression coefficients, while the remaining twenty percent are withheld to assess the predictions. This stochastic procedure is repeated with ten different seeds to obtain an average. In leave-one-out (LOO) validation, we test on each year in turn, retaining the data from all other years for training. The average annual predicted versus observed fractional yield for each year under this regime is shown in Figure~\ref{fig:cv_plot}. We also include a variation of this in which we exclude \remove{those adjacent to it}\add{adjacent yields} when inferring the regression parameters, following \citep{iizumi:2018},\remove{ with the view} to reduce potential temporal correlation.
+
+A yet stricter approach is to follow a rolling-origin validation procedure, such that only observations prior to the one currently being tested on are available for training: in each iteration we advance forward a year and accumulate an additional training sample. We begin by employing the standard root-mean-square error (RMSE) and classical $R^2$, indicating the degree of variance captured by the predictions, as quality measures of our cross-validated estimates. Table~\ref{table:cv_results_clas_bayes} summarizes the results for the three models obtained with the various validation schemes \add{using the five year median anomaly}. The RMSE values for each of the three schemes are all comparable with Gaussian process regression marginally performing best according to most metrics. The negative classical $R^2$ values show that all of the \remove{methods}\add{point predictions} do not\remove{ well} predict year to year variations if we ignore errors and factors that are not modelled in the measured yield. This means that the model \add{point predictions} can be used to predict \emph{mean} yield changes resulting from climate changes but not to accurately predict yearly yields.
+
+The classical $R^2$ values fail to make full or appropriate use of the model posteriors. Indeed, \citet{Gelman:2019} have argued that \add{classical} $R^2$ is also not an appropriate metric of model performance in the context of Bayesian inference due to the possibility of it lying outside the [0,1] interval. Instead, they suggest a new metric, ``Bayesian $R^2$", which lies with the [0,1] interval by construction and involves using draws from the posterior rather than the mean or median values used by classical $R^2$.  \add{The output of a Bayesian model is a probability distribution for every measurement, such that using a point prediction from the posterior median parameter values is somewhat arbitrary.} The Bayesian $R^2$ is designed to provide a measure of the variance in the data accounted for by the model, and is defined as the predicted variance divided by predicted variance plus error variance:
+
+\begin{equation}
+\label{eq}
+\textrm{Bayesian } R^2_s = \frac{V^N_{n=1} y_n^{\textrm{pred } s} }{V^N_{n=1} y_n^{\textrm{pred } s}  + \textrm{var}^s_{\textrm{res}}}
+\end{equation}
+where $V^N_{n=1} y_n^{\textrm{pred } s}$ is the variance of the predicted values for the draw from the posterior, $s$, and $\textrm{var}^s_{\textrm{res}}$ is the expected residual variance. This equation therefore describes the proportion of variance explained for a given draw from the posterior sample. We therefore \remove{provide}\add{use these} Bayesian $R^2$ values for the posteriors, computed here as the median of twenty draws from the posterior. \remove{These $R^2$ values arguably provide a superior method for evaluating model performance in terms of observed variance that is accounted for. }
+
+Using the Bayesian $R^2$ measure, the bivariate Gaussian model performs the best out of the suite of similar models considered here. The results also imply that the 5-year mean fractional anomaly is the best captured of all the yield metrics. We, therefore, recommend the use of the bivariate Gaussian monthly growth model with the 5-year mean fractional anomaly values, and the remainder of the paper focuses on this model.
+
+\begin{table}[]
+\small
+\centering
+\caption{Comparing Root Mean Square Error (RMSE), classical $R^2$, and Bayesian $R^2$ values calculated from 20 draws from the posterior for the median five-year anomaly values. \add{Both RMSE and classical $R^2$ require a point prediction to be calculated which is not naturally generated by a Bayesian model. In order to calculate it for the purpose of the metric we use the posterior median parameter values.} \remove{Based on these comparisons}\add{Due to the limitations of the classical metrics} we use Bayesian $R^2$ values to compare model performance, which is designed to be a measure of the fraction of variance explained by the model. It is difficult to interpret classical $R^2$ values that lie outside the [0,1] interval and, since Bayesian modelling is not designed to provide a point estimate, it is considered somewhat arbitrary to investigate the posterior median.}
+\label{table:cv_results_clas_bayes}
+\vskip 0.15in
+\begin{tabular}{lrrr}
+\hline
+ & \multicolumn{3}{c}{5 year median anomaly}  \\
+Validation Method   & RMSE   & Classical $R^2$  & Bayesian $R^2$   \\ \hline
+
+\multicolumn{4}{c}{Linear Regression}    \\ \hline
+Random Split        & 0.91   & 0.03   &  0.20 \\
+LOO                 & 0.85   & -2.73  &  0.04 \\
+Modified LOO        & 0.83   & -2.45  &  0.20 \\
+Rolling-origin      & 1.05   & -5.82  &  0.05 \\ \hline
+\multicolumn{4}{c}{Gaussian Processes}   \\ \hline
+Random Split        & 1.00   & -0.01  &  0.03 \\
+LOO                 & 0.86   & -2.43  &  0.04 \\
+Modified LOO        & 0.85   & -2.38  &  0.09 \\
+Rolling-origin      & 0.92   & -4.03  &  0.04 \\ \hline
+\multicolumn{4}{c}{Bivariate Gaussian}   \\ 
+\hline
+Random Split        & 1.09   & -4.34  &  0.40 \\
+LOO                 & 1.05   & -4.05  &  0.34 \\
+Modified LOO        & 1.01   & -4.53  &  0.40 \\
+Rolling-origin      & 1.34   & -3.56  &  0.35 \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[]
+\small
+\centering
+\caption{Bayesian $R^2$ values for the three models, obtained using the four different cross-validation schemes. The classical $R^2$ is computed from the posterior median parameter values (which may not be mutually consistent). Bayesian $R^2$ values are the mean from 20 draws from the posterior. All anomalies are computed from the five-year window centered on the yield value, except the linearly detrended yields which use the anomaly from the all state linear trend from least squares fitting. The highest values are found for the bivariate Gaussian model using five-year mean fractional anomalies.}
+\label{table:cv_results}
+\vskip 0.15in
+\begin{tabular}{l llll}
+\hline
+Validation Method     & 5-year median         & 5-year mean          & 5-year mean fraction  & Linear detrending   \\ \hline
+
+\multicolumn{5}{c}{Linear Regression}   \\ \hline
+Random Split          & 0.20                  & 0.07                 & 0.08                  &  0.07  \\
+LOO                   & 0.04                  & 0.18                 & 0.19                  &  0.06  \\
+Modified LOO          & 0.20                  & 0.21                 & 0.21                  &  0.24  \\
+Rolling-origin        & 0.05                  & 0.05                 & 0.05                  &  0.06  \\ \hline
+\multicolumn{5}{c}{Gaussian Processes}   \\ \hline
+Random Split          & 0.03                  & 0.05                 & 0.04                  &  0.04 \\
+LOO                   & 0.04                  & 0.05                 & 0.05                  &  0.06 \\
+Modified LOO          & 0.09                  & 0.10                 & 0.10                  &  0.10 \\
+Rolling-origin        & 0.04                  & 0.05                 & 0.05                  &  0.05 \\ \hline
+\multicolumn{5}{c}{Bivariate Gaussian} \\ \hline
+Random Split          & 0.40                  & 0.37                 & 0.49                  &  0.40 \\
+LOO                   & 0.34                  & 0.50                 & 0.49                  &  0.36 \\
+Modified LOO          & 0.40                  & 0.40                 & 0.51                  &  0.43 \\
+Rolling-origin        & 0.35                  & 0.33                 & 0.50                  &  0.36 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/loo_all_states_us_maize_frac_anom}
+\caption{\label{fig:cv_plot} Predicted versus observed maize fractional yield anomalies for the six US states during 1980-2014. The grey line shows equality between predicted and observed values. The predicted values are based on the posterior median which was used for the computation of the classical $R^2$. The full posterior captures the full distribution of predicted values for the full parameter sample and is measured by the Bayesian $R^2$. Predictions were generated under LOO cross-validation.}
+\end{figure}
+
+\section{Results}
+\label{sec:results}
+In this section we discuss the inferred parameter values of the bivariate Gaussian generative model and summarise its general form. Results are plotted in figures~\ref{fig:2d_Gauss_temp_post_sample_growth_curve}-\ref{fig:response_function}. These figures show the posteriors on the parameters of the bivariate Gaussian generative model. Figure~\ref{fig:response_function} shows the growth response function for the mean posterior parameter values. The mean parameter values for the posterior are $\mu_T = 19.1$~$^\circ$C, $\sigma_T = 6$~$^\circ$C, $\mu_P = 114$~mm, and $\sigma_P = 75$~mm. Statistics describing the posterior are presented in table~\ref{table:posterior}. \add{The Gaussian formulation means that modelled growth will fall to less than 10\% of its maximal value for monthly temperatures that differ from the optimum ($\mu_T = 19.1$~$^\circ$C) by more than roughly two standard deviations, i.e. 2$\sigma_T = 12$~$^\circ$C. This two-sigma approach can be used to infer information about the cardinal temperatures for US maize \citep[e.g.][]{yin:1995}, and corresponds to lower and upper monthly temperature thresholds of roughly 7$~$^\circ$C and 31$~$^\circ$C, respectively.}
+
+% this table needs a little more explanation. To interpret neff properly it would help to now how many simulations we did. 2000? Also what does the correlation relate to? Also worth saying what the normalisation means.
+\begin{table*}
+\centering
+\caption{Summary of the posterior on the parameters of the bivariate Gaussian. For each parameter of the model we present the posterior mean, the standard error on the mean, the standard deviation, the 2.5\%, 25\%, 50\%, 75\%, and 97.5\% percentiles the effective number of samples, $n_{\rm eff}$ and $\hat{R}$. $\hat{R}$ close to 1 is considered to be `good' and indicates convergence. There are 2000 samples from the posterior, $n_{\rm eff}$ takes correlations between chains into account so that it gives the equivalent number of completely independent chains. The correlation, $\rho$ (defined in equation~\ref{eqn:2d_gaussian_sigma}), is consistent with zero, indicating no evidence for a correlated response to temperature and precipitation. The normalisation sets the mean yield at actual T and P values equal to our baseline yield. For a full description of the model parameters see section~\ref{sec:2d_descrip_appendix}.}
+\label{table:posterior}
+\vskip 0.15in
+\small
+\begin{tabular}{lllllllllll}
+Parameter             &  mean  & se$_{mean}$ & sd   & 2.5\%  & 25\%   & 50\%   & 75\%    & 97.5\% & $n_{\rm eff}$ & $\hat{R}$\\
+\hline
+%PREVIOUS FROM ROLLING MEDIAN
+% $\mu_T$ [$^\circ$C]     & 18.64  & 0.02      & 0.81 & 16.95  & 18.12  & 18.71  & 19.17   & 20.15  & 1303    & 1.0\\
+% $\sigma_T$ [$^\circ$C]  & 7.13   & 0.02      & 0.58 & 6.03   & 6.72   & 7.1    & 7.51    & 8.28   & 1206    & 1.0\\
+% $\mu_P$ [mm]            & 115.15 & 0.09      & 3.42 & 108.26 & 112.88 & 115.18 & 117.41  & 121.6  & 1372    & 1.0\\
+% $\sigma_P$ [mm]         & 74.98  & 0.06      & 2.58 & 69.99  & 73.28  & 74.98  & 76.69   & 80.0   & 1933    & 1.0\\
+% $\rho$                  & -0.05  & 1.4e-3    & 0.06 & -0.15  & -0.08  & -0.05  & -8.3e-3 & 0.06   & 1573    & 1.0\\
+% norm  [t/ha]            & 2.2    & 1.6e-3    & 0.06 & 2.1    & 2.17   & 2.2    & 2.24    & 2.32   & 1241    & 1.0\\
+%NEW FROM ROLLING MEAN FRAC
+$\mu_T$ [$^\circ$C]     & 19.14   &   0.02    &   0.65  &  17.73  & 18.73   &  19.17  &   19.59 & 20.28   &    1227 &    1.0\\
+$\sigma_T$ [$^\circ$C]  & 6.22    &  0.02     &  0.51   &   5.3   &   5.87  &    6.2  &  6.53   &  7.35   &   918   &    1.0\\
+$\mu_P$ [mm]            & 113.7   &   0.08    &   3.42  & 107.09  & 111.37  & 113.75  & 116.08  &  120.25 &  1872   &    1.0\\
+$\sigma_P$ [mm]         & 75.47   &   0.06    &  2.57   &  70.57  &  73.73  &  75.42  &  77.22  &  80.55  &  2000   &    1.0\\
+$\rho$                  & -0.03   &  1.5e-3   &  0.06   &  -0.14  &  -0.06  &  -0.03  &   0.01  &   0.09  &   1455  &    1.0\\
+norm  [t/ha]            & 2.33    &  2.0e-3   &   0.06  &   2.21  &   2.28  &   2.33  &   2.37  &   2.45  &   1003  &    1.0\\
+\end{tabular}
+\end{table*}
+
+
+Although they have been derived using monthly mean temperature and precipitation, the growth response functions can be expressed in terms of mean daily maximum temperature, giving a more direct comparison with previous work \citep[e.g.][]{schlenker:2009, hatfield:2011, sanchez:2014, hatfield:2015}. This makes use of a strong linear relationship between mean daily maximum and monthly mean temperature (Pearson correlation 0.998) as shown in figure \ref{fig:daily_vs_monthly}. \remove{The points in the background show each measurement of daily maximum and monthly mean temperature.} One way of identifying the relationship between these related variables would be to fit their joint distribution. Here, we instead explore the conditional dependence by binning the monthly mean temperatures and calculating the associated mean daily maximum. The gradient of the best-fit line is 0.967 $\pm$ 0.024, and the intercept is 6.863 $\pm$ 0.34 $^\circ$C; consequently, an optimal monthly mean temperature of $\approx$ 18--19 $^\circ$C corresponds to an optimal daily maximum of $\approx$ 24--25 $^\circ$C. This is consistent with \cite{schlenker:2009} who applied a range of statistical models to US maize production and found increasing yield for daily temperatures up to 29$^\circ$C, and yield decreases above this threshold. The review by \cite{sanchez:2014} gives an optimal growing temperature of 30.8 $\pm$ 1.6 $^\circ$C for the whole maize plant life-cycle. However, the grain-filling stage of the cycle (typically June and July in the US) appears to be the most sensitive to temperature, with the optimal growing temperature given as 26.4 $\pm$ 2.1 $^\circ$C, overlapping with the results presented here. \add{For completeness, the inferred monthly minimum and maximum temperature thresholds correspond to daily maxima of $\approx$ 13--14 $^\circ$C and $\approx$ 36--37 $^\circ$C, respectively. The symmetry of these values either side the optimal temperature is a consequence of the Gaussian formulation of the model, and differs to other estimates \citep[e.g.][and references therein]{zhou:2018}, but is broadly compatible. While this symmetry represents a limitation of the model, the Gaussian approach is still considered informative since it allows us to explore the joint non-linear response to temperature and precipitation.}
+
+As described earlier, \cite{kent:2017} investigated temperature and rainfall thresholds during June, July and August that were associated with large (>10\%) yield reductions, known as shocks. In that work, yield shocks were found to be associated with the simultaneous occurrence of mean temperatures above 23~$^\circ$C for the three month period, and total precipitation below 240 mm. Figure~\ref{fig:2d_Gauss_temp_post_sample_growth_curve} shows that 23~$^\circ$C is significantly greater than the optimal growing temperature, suggesting consistency with \cite{kent:2017}, despite applying very different approaches to the same data. Applying the offset between monthly mean temperatures and the daily maximum suggests that shocks are associated with extended periods during the grain filling stage with daily maximum temperatures above 29 $^\circ$C, showing excellent agreement with \cite{schlenker:2009}, and consistency with \cite{sanchez:2014} and \cite{hatfield:2015}. The 3-month precipitation threshold of 240 mm corresponds to an average of $\approx$~80 mm per month. This is significantly below the optimal monthly precipitation, shown in figure \ref{fig:2d_Gauss_precip_post_sample_growth_curve}, again indicating consistency between the two approaches. \add{Within the Gaussian model described here, the thresholds identified by \cite{kent:2017} correspond to a 25\% reduction in yield relative to what would be expected under optimal temperature and precipitation conditions.} Figures~\ref{fig:2d_Gauss_prior_vs_post_temp_mean_vs_sigma} and 
+\ref{fig:2d_Gauss_prior_vs_post_precip_mean_vs_sigma} show the prior and posterior distributions of mean and variance for temperature and precipitation respectively and show how the posteriors are not sensitive to the assumed wide Gaussian priors.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/2d_Gauss_temp_post_sample_growth_curve}
+\caption{\label{fig:2d_Gauss_temp_post_sample_growth_curve} A sample of posterior Gaussian parameter values presented as monthly growth expressed as a function of temperature for the bivariate Gaussian model at $P = 100$mm. Note there is greater uncertainty for low temperatures, which occur rarely during the maize growing season in the US. Each line corresponds to a set of parameter values drawn from the posterior.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/2d_Gauss_precip_post_sample_growth_curve}
+\caption{\label{fig:2d_Gauss_precip_post_sample_growth_curve} A sample of posterior Gaussian parameter values presented as monthly growth expressed as a function of precipitation value at $T = 20$~$^\circ$C. Note there is greater uncertainty for high precipitation totals, which occur rarely during the maize growing season. Each line corresponds to a set of parameter values drawn from the posterior.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/2d_Gauss_prior_vs_post_temp_mean_vs_sigma}
+\caption{\label{fig:2d_Gauss_prior_vs_post_temp_mean_vs_sigma} A comparison between the prior (red) and the posterior (blue) on the mean and sigma (width) values for the temperature component of the bivariate Gaussian model. This shows how the data constrains the parameter values.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/2d_Gauss_prior_vs_post_precip_mean_vs_sigma}
+\caption{\label{fig:2d_Gauss_prior_vs_post_precip_mean_vs_sigma} A comparison between the prior (red) and the posterior (blue) on the mean and sigma (width) values for the precipitation component of the bivariate Gaussian model. A large difference between the prior and posterior shows that the posterior is dominated by the likelihood and not the prior. This shows how the data constrains the parameter values.}
+\end{figure}
+
+Figure~\ref{fig:response_function} shows the global form of the growth response function, illustrating the joint response to both monthly mean temperature and precipitation. Based on this analysis, there is no evidence for correlated responses to temperature and precipitation; however, an absence of data in parts of the monthly T-P plane means that there is insufficient evidence to say that there is no correlated response. Had there been a strong correlation, maximising growth rates at higher temperatures would likely require higher precipitation, as for the emulator of rainfed mid-latitudes C4 crops, developed by \cite{snyder:2018}.
+
+
+
+% {\color{green} I'm not quite sure what you mean by ``sometimes" here.  Figure~\ref{fig:response_function} gives a specific optimal precipitation at any temperature, given the enforced 2D Gaussian function, this either increases or doesn't it can't ``sometimes" increase}. 
+
+%The joint growth response function shows no evidence of correlated responses to temperature and precipitation. For example, according to this analysis, maximising yield under a warming climate does not always require increased precipitation, as might be expected. This contrasts slightly with the emulator of simulated rainfed C4 crops at mid-latitudes, developed by \cite{snyder:2018}, which indicates that yields under higher temperatures benefit from increased precipitation. It is unclear whether this disparity is a consequence of limited observational data. 
+%{\color{green} this could be expanded a bit to say what differences in the approach might lead to these differences. In particular I think restricting ourselves to a 2D Gaussian means that we are limited to very specific types of correlation}. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/2d_2_contour}
+\caption{\label{fig:response_function} Two-dimensional growth response function showing yield normalised to 2007 linear trend level as a function of monthly mean temperature and precipitation.}
+\end{figure}
+
+\section{Potential impacts of climate change on mean yield}
+\label{sec:impacts}
+The empirical maize growth rate is a strong function of mean monthly temperature, with an optimum close to 18--19 $^\circ$C. Accordingly, regions which experience temperatures that are typically further away from the optimum (either cooler or warmer) are likely to experience a lower yield than regions which are closer to the optimum. Of course, this depends significantly on the plant's response to other factors including precipitation, while solar radiation, CO$_{2}$, pollution, pests and disease are not directly accounted for. 
+
+The shape of the yield response function also indicates the likely direction of climate impacts on maize yield in the US. In particular, as mean temperatures increase, they are likely to be further from optimal growing conditions. This will tend to reduce yield in the absence of any successful adaptation strategies such as development of new maize varieties that are optimised for higher temperatures. An important caveat here is that we do not account for changing CO$_{2}$ concentrations, which are an input in the photosynthesis process. In particular, increasing CO$_{2}$ levels might offset yield declines resulting from warmer temperatures. However, there is evidence that, while the photosynthetic rate for C4 crops does increase with CO$_{2}$ concentration, it starts to level out around 400 ppm \citep[e.g.][]{leakey:2009}.
+
+To test the climate change response of the model, we used the derived growth response function to quantify changes in mean yield as a function of changes in mean temperature, while keeping precipitation and growing area fixed. To make a fair comparison with the present-day, we applied the delta change method by adding a constant increment to the observed temperature time series, and modelling the resultant yield. The increment is varied between -5 and 5$^\circ$C  as shown in Figure \ref{fig:yield_responses}. In agreement with previous studies \citep[e.g.][]{bassu:2014, urban:2015, lobell:2017}, this suggests that the US maize yield is likely to decrease by several percent in response to a 1 $^\circ$C temperature rise, with larger reductions expected for greater warming.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/temperature_impact2_m5p5}
+\caption{\label{fig:yield_responses} Mean yield as a function of mean temperature change normalised to 2007 linear trend levels. The model predicts relative reductions in yield of $\approx 4$\% with mean temperature increase of 1~$^\circ$C. }
+\end{figure}
+
+Figure~\ref{fig:yield_responses} provides a more complete exploration of potential climate change impacts within this framework, showing the expected yield as a function of constant changes in both temperature and precipitation, applying independent increments of -5 to 5 $^\circ$C, and -100 to 100 mm, to the observed temperature and precipitation time series, respectively. The precipitation increments are broadly in line with projected changes in the climate during the 21st century \citep{usgcrp:2017}, see also Figure~\ref{fig:sim_p_t_dist}. 
+
+This effectively provides a look-up table to assess the impacts of simultaneous changes in temperature and precipitation, subject to the caveats outlined previously. For example, figure~\ref{fig:temp_precip_impact} suggests that US maize is relatively well-suited to the current climate and that significant changes in either/both temperature and rainfall are likely to reduce mean yield. In contrast, locations where current temperatures are below the optimum (e.g. the UK), would be expected to see an increase in maize yield with a warming climate.
+
+We note that this analysis does not allow for changes in the frequency of extreme daily maximum temperatures or precipitation intensity which may have a significant influence on both average yield and yield variability.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/temp_precip_impact_contour}
+\caption{\label{fig:temp_precip_impact} Yield as a function of mean temperature and precipitation change normalised to 2007 linear trend levels. The model predicts reductions in yield due to increasing temperatures and decreasing precipitation. We include a contour at a yield of 10\% below the current value to define a rough region outside which we see fractionally large reductions.}
+\end{figure}
+
+Finally, to demonstrate the flexibility of the model, we have estimated yields based on projected changes in temperature and precipitation calculated by global climate model simulations provided by the Intergovernmental Panel on Climate Change Fifth Assessment Report, Working Group 1 \citep[http://www.climatechange2013.org/report/full-report/][]{ipcc2:2013}. Figure~\ref{fig:sim_p_t_dist} shows the ensemble of projected changes in summer temperature and precipitation for the Central North American Giorgi region (which encompasses the US Cornbelt) under the RCP8.5 scenario for 2041-2070 relative to 1981-2014. For each of the 39 climate model simulations, the projected change in temperature and precipitation is added to the historical climate data to create synthetic time series of future weather conditions. We then compute the yield for the full sample of 2000 parameter values from the posterior, giving a probability distribution of yields with a median reduction of 12\%. Figure~\ref{fig:simulated_impact} shows the full distribution of yield changes arising from these changes using the yield model presented here.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/sim_p_t_dist}
+\caption{\label{fig:sim_p_t_dist} Simulated changes in temperature and precipitation between 2041-2070 relative to 1981-2014 under the RCP8.5 scenario, \citep[][]{ipcc2:2013}. }
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{./figures/simulated_impact}
+\caption{\label{fig:simulated_impact} Influence of simulated temperature and precipitation changes \citep[][]{ipcc2:2013} on mean US Maize yield in 2041-2070 relative to 1981-2014 under the RCP8.5 scenario, keeping growing area fixed. The distribution is determined by the simulated changes in temperature and precipitation, and the posterior of the fitted model - we find a median reduction of 12\%. }
+\end{figure}
+
+\section{Discussion}
+\label{sec:future}
+Understanding climate change impacts on food production is essential for developing effective policies and adaptation plans at local, national and international scales to ensure food security for all. The broad aim of the work presented here is to explore the feasibility of deriving physically-realistic relationships between maize yield in the US and local monthly temperature and precipitation during the growing season. A key part of this was to develop a computationally inexpensive generative model that captures the main impacts of monthly meteorology on maize growth rates, using this understanding to assess the plausible impacts of climate change on current varieties in the absence of adaptation measures. In turn, this new approach can contribute to the growing body of evidence that supports genetic breeding programs and the development of improved agronomic practices which will ensure high levels of agricultural productivity in the future. One caveat is that this data-driven approach is not designed to capture all of the relevant physiological processes that govern maize growth and will fail to identify high impact events associated with the plant's response to pests, disease, pollution or short-lived meteorological extremes (e.g. frost, hail, high winds, extreme rainfall etc).
+
+%{\color{green} are these more caveats...?}
+The reliability of the empirical growth response functions is dependent on the quality of both the yield and meteorological data. These data are well-documented in the US, making it an ideal location for exploring and validating the approach, i.e. comparing critical temperatures with laboratory measurements and other studies \citep[e.g.][]{cutforth:1990, schlenker:2009, hatfield:2011, lobell:2013, sanchez:2014}. In other regions, historical records may be sparser, potentially making the modelling more challenging; however, we have demonstrated here that it is possible to extract useful information about crop response functions from monthly data at only a few different locations. For that reason, this approach lends itself to locations where data is limited. More generally, it will be of interest to assess how well the approach can capture the characteristics of different crops grown in different environments.
+
+ 
+
+%\subsection{Application of models}
+%\label{sec:application}
+The model presented here has been developed firstly as a way of capturing the broad influence of natural climate variability on US maize yield, and secondly to explore potential climate change impacts on current maize varieties in the absence of adaptation. Because of this, \remove{it}\add{our model} is closely related to previous work \citep[e.g.][]{schlenker:2009, roberts:2012, lobell:2013}, while \remove{it}\add{our model} also provides a method for the robust characterisation of \add{model} errors and permitting applications with differing time resolution measurements. \remove{WE}\add{We} have \add{also} demonstrated how, given projections of monthly temperature and precipitation from global climate simulations, it can be used to provide a probability distribution of the impact on mean yields.
+
+For completeness, we emphasise that the model demonstrated here only considers area-average yield, rather than total production which may be more relevant for assessing potential climate change stresses on national food security. The reason for this is that total production is a function of both yield and the area harvested. The latter is known to be affected by a range of non-climate factors, including commodity and crude oil prices \citep[e.g.][]{Zafeiriou:2018}, as well as water availability and soil suitability. In contrast, the yield is expected to be much more strongly correlated with weather conditions during the growing period.
+
+Previous research has explored the influence of a range of adaptation strategies \citep[e.g.][and references therein]{challinor:2014}. Examples include changes in crop varieties, species, planting times, irrigation, as well as more transformational changes such as crop relocation. Other studies have focused more on the economic implications of adaptation \citep{Seo:2008, schlenker:2013, Carter:2018, Dalhaus:2018}. In principle, models can also incorporate a number of adaptation options, such as different crop varieties or species, planting dates and irrigation. 
+
+\remove{Taking this approach  means the model can add to the}\add{The approach presented here contributes to the} toolkit of methods that seek to inform adaptation decisions, particularly \add{phenotyping and} the objectives of crop genetic improvement programmes (e.g. http://www.wgin.org.uk/), as well as contributing to studies of crop suitability under a changing climate. For example, comparing estimates of the optimal temperature range for current maize varieties with the long-term warming trend provides an intuitive way of demonstrating the projected climate change impacts, and helping to inform adaptation choices \citep[e.g.][]{tigchelaar:2018}. This approach can also provide useful context for interpreting climate change impacts simulated by more complex models \citep[e.g.][]{ostberg:2018}.
+
+This approach has the potential to help crop breeders identify and target traits that will be more beneficial in the future (e.g. heat and drought tolerance, higher optimal growing temperatures), and assist agronomists in developing improved practices that will maintain high levels of productivity. 
+
+More generally, this approach could be used to identify regions where current crop varieties and agronomic practices are projected to come under stress in the future, indicating where and when incremental or transformational adaptation may be most effective.
+
+
+
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+We have developed and applied data-driven statistical models for exploring the dependence of US maize yield variations on monthly mean temperature and precipitation\add{, using both linear and non-linear relationships}. \remove{This approach shares some similarities with previous statistical crop models \citep[e.g.][]{wang:1998, schlenker:2009, lobell:2010,  welch:2010, roberts:2012, lobell:2013, zhou:2018} and \cite{snyder:2018} who developed emulators of simulated crop yields based on the Agricultural Model Intercomparison and Improvement Project (AgMIP) Coordinated Climate-Crop Modeling Project (C3MP) data.} However, a particular aim of the approach presented here has also been to assess the feasibility of extracting physically plausible growth rate information from limited data, in this case state-scale yield and monthly meteorological information. \add{We have demonstrated how these coarser grained models can be used with predicted global meteorological changes to compute yield reduction risks.}
+
+\add{The linear model predicts maize yield using a sum over the growing season of the monthly contributions to growth based on a linear function of observed temperature and precipitation.} \remove{Based on linear models, the}\add{The} early months in a calendar year are weak predictors of maize yield, consistent with a planting date around April, c.f. AMIS crop calendar. In contrast, the following six months to harvest (i.e. April-September) are found to be strong predictors of maize yields\remove{ in the US Cornbelt}, indicating that weather conditions during the growing season\add{ in the US Cornbelt} are statistically much more important than antecedent conditions.
+
+\add{The non-linear model predicts maize yield using a sum over the growing season of the monthly contributions to growth based on a time-stationary two-dimensional Gaussian function of observed temperature and precipitation.} \remove{To test the ability of the approach to extract maize yield response to temperature and rainfall using minimal data, we assume monthly maize growth rates are captured by a time-stationary two-dimensional Gaussian function of temperature and precipitation.} \remove{in which} \add{The modelled} growth rates are maximal at the peak of the function, and lower either side \citep[c.f.][]{cutforth:1990, wang:1998,  streck:2007, hatfield:2015, korres:2016, tigchelaar:2018}. As such, the growth response function represents the typical response of the crop, averaged over the growing season. The yield and meteorological data are then used to constrain the location of the peak and the width of the bivariate Gaussian function\add{, which provides information about the optimal monthly temperature and rainfall for current US maize varieties.} 
+
+\add{There are several major differences between this approach and previous work: firstly, model incorporates non-linear responses to both temperature and precipitation, allowing for potential interactions to impact maize yield; secondly, the non-linear function is Gaussian rather than a Beta function \citep[e.g.][]{yin:1995, streck:2007}, which avoids the need to estimate explicit minimum and maximum thresholds for temperature and precipitation since the growth rate tend to zero for large deviations from optimal growing conditions; thirdly, the contributions to maize growth are calculated and summed on monthly intervals, rather than daily as for Growing Degree Days \citep[e.g.][]{zhou:2018}.}
+
+This approach represents a simplification of the crop's true response function which is time-dependent and multivariate \citep[e.g.][]{siebert:2017}, reflecting changes in the crop's sensitivity to meteorological conditions during different growth phases \citep[e.g.][]{hatfield:2011, sanchez:2014}. \add{Despite this, the formulation shares similarities with other models that have explored non-linear yield responses to temperature and accumulated thermal units \citep[e.g.][]{lobell:2013, zhou:2018}. In addition, it also allow us to straightforwardly explore the joint influence of temperature and rainfall variations on monthly timescales.} Within this framework, we find maize growth rates are maximal for a monthly mean temperature of $19 \pm 0.7 ^\circ$C, and monthly total precipitation of $ 114 \pm 3$ mm. This corresponds to a daily maximum temperature of 24--25~$^\circ$C, in approximate agreement with \cite{sanchez:2014, hatfield:2015} for the grain filling phase of growth. \remove{Furthermore,}\add{Due to the shape and fitted parameters of the bivariate Gaussian function} the growth rates decline rapidly for temperatures above this threshold, in approximate agreement with \cite{schlenker:2009}. 
+
+Our analysis also suggests that current US maize varieties are relatively well optimised for present-day growing conditions in the US Cornbelt, but that growth rates would be maximised at slightly lower monthly temperatures ($\approx$ -1.5 $^\circ$C) and slightly higher monthly precipitation totals ($\approx$ +25 mm). Keeping precipitation at present-day levels and the growing area fixed, a 1$^\circ$C temperature rise is expected to reduce the mean yield by 3-5 \%, in broad agreement with previous findings \citep[e.g.][]{bassu:2014, urban:2015, lobell:2017}. However, we note that this analysis does not allow for various adaptation strategies (such as changes in planting date, location or irrigation) or account for changes in carbon dioxide, which may not have a strong influence on C4 crop above 400 ppm \citep[e.g.][]{leakey:2009}. Similarly, changes in the frequency of extreme daily maximum temperatures or precipitation intensity may have a significant influence on both average yield and year-to-year variability. 
+
+The similarity with previous findings is encouraging given that, to our knowledge, this is the first attempt to directly estimate a growth response function from state-scale data, rather than from field trials. This suggests that the new approach could be applied across a range of spatial and temporal scales, and to distinguish growth responses of different maize varieties. The main constraint to this application is the need for sufficient yield and meteorological data to robustly estimate the model parameters outlined in table~\ref{table:posterior}.  
+
+More broadly, this approach provides an intuitive and computationally inexpensive method for deriving data-driven crop indices that can be used in climate risk studies \cite[e.g.][]{kent:2017}, and can complement other approaches to modelling crops \citep[e.g.][]{schlenker:2009, lobell:2010, carter:2016, zhou:2018}. 
+
+\section*{Acknowledgements}
+
+This work was undertaken as the Forecasting Agricultural Crop Yields on National scales (FACYNation) project, supported by funding from the Science and Technology Facilities Council (STFC) through the STFC Food Network+. Raphael Shirley acknowledges support from the Daphne Jackson Trust and from the Spanish Ministerio de Ciencia, Innovaci\'{o}n y Universidades (MICINN) under grant numbers ESP2017-86582-C4-2-R and ESP2015-65597-C4-4-R.. Edward Pope, Chris Kent and James Bacon were also supported by the Met Office Hadley Centre Climate Programme (GA01101) and thank Stewart Jennings for useful discussions. We are extremely grateful to the anonymous reviewers for their help improving the work and its presentation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+%\bibliographystyle{mnras}
+%\bibliography{example} % if your bibtex file is called example.bib
+%\bibliographystyle{mnras} 
+%% \bibliographystyle{alpha}
+%% \bibliography{sample}
+\interlinepenalty=10000
+
+%\section*{References}
+%\bibliographystyle{unsrt} 
+\bibliographystyle{jphysicsB}
+\bibliography{./bibliography}
+
+
+% Alternatively you could enter them by hand, like this:
+% This method is tedious and prone to error if you have lots of references
+%\begin{thebibliography}{99}
+%\bibitem[\protect\citeauthoryear{Author}{2012}]{Author2012}
+%Author A.~N., 2013, Journal of Improbable Astronomy, 1, 1
+%\bibitem[\protect\citeauthoryear{Others}{2013}]{Others2013}
+%Others S., 2012, Journal of Interesting Stuff, 17, 198
+%\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+%\section{GitHub}
+%\label{sec:github_appendix}
+%All the code and data is available on GitHub at https://github.com/raphaelshirley/FACYnation.
+
+\section{Access to the code}
+\label{sec:model_descrip_appendix}
+
+All the code and data is available on GitHub:\\
+
+\url{https://github.com/raphaelshirley/facynation}\\ 
+
+All the models in the Stan format are there to be rerun or extended through Jupyter notebooks. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
