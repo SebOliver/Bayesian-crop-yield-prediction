@@ -42,7 +42,7 @@
 
 I am writing to respond to the reviewers' comments made following our submission of the paper ``An empirical, Bayesian approach to modelling the impact of weather on crop yield: maize in the US" to Environmental Research Communications. 
 
-This is submission is made in response to the second set of comments made by the reviewers. Both reviewers comment that the re-submission made an improvement on the original but both have requested some further changes.
+This submission is made in response to the second set of comments made by the reviewers. Both reviewers comment that the re-submission made an improvement on the original but both have requested some further changes.
 
 
 
@@ -63,10 +63,9 @@ Referee: 1
 
 COMMENTS TO THE AUTHOR(S)
 The authors done a good job in revising the paper. I think the choice to switch towards Environmental Research Communications is a good choice. As I understand, novelty is no longer a criterion to consider.
-
 }
 
-{\color{red} ADD SOEM DISCUSSION}
+We are grateful for the positive comment and agree that Environmental Research Communications is a more appropriate journal.
 
 \review{
 
@@ -75,7 +74,9 @@ In general, my points were addressed. Three points remain:
 
 }
 
-The simplification is the movement from daily maximum to monthly means. This is done to increase the applicability to data sets that only contain monthly means. The robustness is due to the Bayesian framework which properly characterises the posterior to give a measure of the uncertainty in each model parameter given the data and the model and the uncertainty in predicted yields. Crucially, it incorporates model assumptions into uncertainties. We have removed some of the instances of this phrase and explained it at the first usage. The value added is that predictions of the impact of global changes to temperature and precipitation combine the uncertainties in those changes with uncertainties in the model to give a measure of the uncertainty in the predicted yields. However, here, we have solely an average increase of temperature and precipitation. It would therefore not add predictive power to resolve at the daily frequency. We are targeting the general impacts of climate change to yields.
+The simplification is the movement from daily maximum to monthly means. This is done to increase the applicability to data sets that only contain monthly means. The robustness is due to the Bayesian framework which properly characterises the posterior to give a measure of the uncertainty in each model parameter given the data and the model and the uncertainty in predicted yields. Crucially, it incorporates model assumptions into uncertainties. We have removed some of the instances of this phrase and explained it at the first usage. The value added is that predictions of the impact of global changes to temperature and precipitation combine the uncertainties in those changes with uncertainties in the model to give a measure of the uncertainty in the predicted yields.
+
+Here, we have access to an average increase of temperature and precipitation across the whole year from climate simulations. It would therefore not add predictive power to resolve at the daily frequency. We are targeting the general impacts of climate change to yields.
 
 \review{
 - Section 2 is now data. On lines 151 ff you sketch possible impacts of climatic extremes. Given the relevance of these fundamentals, I invite you to add more details and literature. I think your paper benefits from having a sting agronomic foundation why and how heat and drought matter for the empirical analysis to come
@@ -86,21 +87,20 @@ We have added additional paragraphs to further discuss the literature.
 
 \review{
 - Line 130ff: I am still puzzled with the detrending vs median. Conceptually, if yields are continuously increasing over time, a median based approach will underestimate the yield residuals (because the yield is always higher than the median from previous years because of technological development). Whatever your comparisons show, I think this is a bias that matters, especially if you want to identify ‘extremes’. Given the relevance of extreme yield observations and climatic extremes, a robust detrending might be suitable (see e.g. Finger 2010). Some additional mode runs with a detrending might be added as appendix
-
 }
 
-The five year rolling median is based on the previous two years, the current year, and the next two years. The median bias will actually only impact the two first and two last values. Away from the boundary there is no bias (31 out of 35 years for each state). In a predictive framework where you only have previous years the anomaly is therefore only with respect to the as yet unknown median. In this case the linear detrending is the only method that does not suffer from this effect. However, the model here can still be used to predict the climactic impact on yields as distinct from the impact of increased productivity. In particular this will be useful in extremes of climate that will have a significant impact on the yield. Finally we recommend using fractional anomalies from the five year rolling mean. As with the median the bias will only impact the edge cases and so will have a small impact on the final parameter values. The Finger 201 detrending method is a robust means (insensitive to outliers) to compute estimators for a detrending model. It could be applied for a linear productivity increase model in order to generate new linearly detrended anomalies. However, figure 1 shows that a least squares estimator captures the productivity increase well. Here the model performs best on the mean five year anomalies which would not be improved using the Finger 2010 method of moments estimator technique since there are no parameters to be estimated.
+The five year rolling median is based on the previous two years, the current year, and the next two years. The median bias will actually only impact the two first and two last values. Away from the boundary there is no bias (31 out of 35 years for each state). In a predictive framework where you only have previous years the anomaly is therefore only with respect to the as yet unknown median. In this case the linear detrending is the only method that does not suffer from this effect. However, the model here can still be used to predict the climactic impact on yields as distinct from the impact of increased productivity. In particular this will be useful in extremes of climate that will have a significant impact on the yield. 
+
+Finally we recommend using fractional anomalies from the five year rolling mean. As with the median the bias will only impact the edge cases and so will have a small impact on the final parameter values. The Finger 201 detrending method is a robust means (insensitive to outliers) to compute estimators for a detrending model. It could be applied for a linear productivity increase model in order to generate new linearly detrended anomalies. However, figure 1 shows that a least squares estimator captures the productivity increase well. Here the model performs best on the mean five year anomalies which would not be improved using the Finger 2010 method of moments estimator technique since there are no parameters to be estimated. As a test we tried removing outliers with a fractional anomaly above ten percent and found that is had a low impact on the parameters of the linear fit and a negligible impact (changes to median values of less than 5~\% of the variance) on the posterior parameter values derived from those anomalies.
 
 
 \review{
-
 - Discussion: I still think you shall critically discuss that your focus on months is not appropriate to capture sensitive crop yield growth stages because these vary from year to year. Instead, a consideration of phenology can help to overcome this
 
 Finger, R. (2010). Revisiting the Evaluation of Robust Regression Techniques for Crop Yield Data Detrending. American Journal of Agricultural Economics 92(1): 205-211
 }
 
-The model's insensitivity to daily temperature changes will become important with access to detailed climate simulations which will predict the impact of a changing climate on both mean increases and changes to variability. The model can account for key growth periods occurring in different months.
-
+The model's insensitivity to daily temperature changes will become important with access to detailed climate simulations which will predict the impact of a changing climate on both mean increases and changes to variability on a daily scale. However, we do not have access to such high resolution predictions and so the challenge we aim to address here is to determine the predictive power of month resolution modelling and the impact of literature predictions of climate change. The model can account for key growth periods occurring in different months as it responds independently to each month's climate conditions.
 
 \review{
 Referee: 2
@@ -119,7 +119,7 @@ We thank the reviewer for pointing us to this paper. The results are broadly in 
 Negative Classical $R^2$ in table 2? This means that the model preforms worse than the mean of the observed values. Assuming this was computed correctly... $R^2$ is not used for model predictive ability. For that you have, for example, the Mean Squared Error of Prediction (MSEP) or Cross-Validation Error. I can’t find Table 2 referenced anywhere in the manuscript.
 }
 
-The output of a Bayesian model for each predicted yield is a probability distribution. The classical $R^2$ requires a point prediction in order to be computed. In order to do so here, we use the median posterior parameter values to compute the prediction. However, this is somewhat arbitrary as discussed in Gelman et al. (2019) since there are various choices that could be made (the median predicted value from the full sample of parameter values could be another choice). Without using any of the validation schemes it is true that classical $R^2$ compares these point prediction performance to the mean. However, using the mean could have a negative value under the validation schemes which remove the target from the training set to avoid over-fitting. There is extensive literature on the interpretation of $R^2$ and we have used the Bayesian $R^2$ metric in its place following the discussion in Gelman et al. (2019) which highlights the possibility for the classical $R^2$ to lie outside the [0,1] interval under Bayesian inference approaches. It highlights situations where maximum likelihood (the equivalent of taking the posterior mode to make point predictions) can mask issues with model performance when using classical $R^2$. All these difficulties with classical $R^2$ are especially relevant in situations such as this where measurements are subject to large noise. The table was not referenced in the previous submission due to a latex error which has been corrected. {\color{red} THIS NEEDS SOME THOUGHT. SOME Discussion here and some more details in the paper}
+The output of a Bayesian model for each predicted yield is a probability distribution. The classical $R^2$ requires a point prediction in order to be computed. In order to do so here, we use the median posterior parameter values to compute the prediction. However, this is somewhat arbitrary as discussed in Gelman et al. (2019) since there are various choices that could be made (the median predicted value from the full sample of parameter values could be another choice). Without using any of the validation schemes it is true that classical $R^2$ compares these point prediction performance to the mean. However, using the mean can produce a negative value under the validation schemes which remove the target from the training set to avoid over-fitting. There is extensive literature on the interpretation of $R^2$ and we have used the Bayesian $R^2$ metric in its place following the discussion in Gelman et al. (2019) which highlights the possibility for the classical $R^2$ to lie outside the [0,1] interval under Bayesian inference approaches. It highlights situations where maximum likelihood (the equivalent of taking the posterior mode to make point predictions) can mask issues with model performance when using classical $R^2$. All these difficulties with classical $R^2$ are especially relevant in situations such as this where measurements are subject to large noise (measurement error and other factors comparable to the variance of interest). The table was not referenced in the previous submission due to a latex error which has been corrected. 
 
 \review{
 LN 164 “anolies” or “anomalies” ?
@@ -133,8 +133,7 @@ LN 557 “WE”?
 
 This has been corrected.
 
-
-We are extremely grateful to the reviewers for all the comments made during the review process. We hope that we have addressed their comments sufficiently. Please don't hesitate to contact us with further queries.
+We are extremely grateful to the reviewers for all the comments made during the review process. We hope that we have addressed their comments sufficiently. Please do not hesitate to contact us with further queries.
 
 \closing{Yours faithfully,}
 
